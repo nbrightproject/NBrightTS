@@ -381,6 +381,16 @@ namespace NBrightDNN
             SetXmlProperty(xpath, value, System.TypeCode.Double, false);
         }
 
+        public void SetXmlProperty(string xpath, string value, System.TypeCode DataTyp)
+        {
+            SetXmlProperty(xpath, value, DataTyp, true,false,false);
+        }
+
+        public void SetXmlProperty(string xpath, string value, System.TypeCode DataTyp, bool cdata)
+        {
+            SetXmlProperty(xpath, value, DataTyp, cdata,false,false);
+        }
+
         public void SetXmlProperty(string xpath, string Value, System.TypeCode DataTyp = System.TypeCode.String, bool cdata = true, bool ignoresecurityfilter = false, bool filterlinks = false)
         {
             if (!string.IsNullOrEmpty(XMLData))
