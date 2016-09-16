@@ -377,25 +377,47 @@ namespace NBrightDNN
             return objMInfo.PortalID;
         }
 
-        //Get portal list to overcome problem with DNN6 GetPortals when ran from scheduler.
+        /// <summary>
+        /// GET Portals 
+        /// </summary>
+        /// <returns></returns>
         public static List<PortalInfo> GetAllPortals()
         {
             var pList = new List<PortalInfo>();
             var objPC = new DotNetNuke.Entities.Portals.PortalController();
-            PortalInfo objPInfo;
 
-            for (var lp = 0; lp <= 500; lp++)
+            var list = objPC.GetPortals();
+
+            if (list == null || list.Count == 0)
             {
-                objPInfo = objPC.GetPortal(lp);
-                if ((objPInfo != null))
+                //Problem with DNN6 GetPortals when ran from scheduler.
+                PortalInfo objPInfo;
+                var flagdeleted = 0; 
+
+                for (var lp = 0; lp <= 500; lp++)
                 {
-                    pList.Add(objPInfo);
-                }
-                else
-                {
-                    break;
+                    objPInfo = objPC.GetPortal(lp);
+                    if ((objPInfo != null))
+                    {
+                        pList.Add(objPInfo);
+                    }
+                    else
+                    {
+                        // some portals may be deleted, skip 3 to see if we've got to the end of the list.
+                        // VERY weak!!! shame!! but issue with a DNN6 version only.
+                        if (flagdeleted == 3) break;
+                        flagdeleted += 1;
+                    }
                 }
             }
+            else
+            {
+                foreach (PortalInfo p in list)
+                {
+                    pList.Add(p);
+                }
+            }
+
 
             return pList;
         }
