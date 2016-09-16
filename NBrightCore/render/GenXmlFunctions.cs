@@ -1258,17 +1258,17 @@ namespace NBrightCore.render
 
                     if (dataTyp.ToLower() == "double")
                     {
-                        strXml += "<" + ddlCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + ddlCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += Utils.FormatToSave(ddlCtrl.SelectedValue, TypeCode.Double);
                     }
                     else if (dataTyp.ToLower() == "date")
                     {
-                        strXml += "<" + ddlCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + ddlCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += Utils.FormatToSave(ddlCtrl.SelectedValue, TypeCode.DateTime);
                     }
                     else
                     {
-                        strXml += "<" + ddlCtrl.ID.ToLower() + " selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + ddlCtrl.ID.ToLower() + " selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += ddlCtrl.SelectedValue;
                     }
                     strXml += "]]></" + ddlCtrl.ID.ToLower() + ">";
@@ -1354,17 +1354,17 @@ namespace NBrightCore.render
 
                     if (dataTyp.ToLower() == "double")
                     {
-                        strXml += "<" + rblCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + rblCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += Utils.FormatToSave(rblCtrl.SelectedValue, TypeCode.Double);
                     }
                     else if (dataTyp.ToLower() == "date")
                     {
-                        strXml += "<" + rblCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + rblCtrl.ID.ToLower() + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += Utils.FormatToSave(rblCtrl.SelectedValue, TypeCode.DateTime);
                     }
                     else
                     {
-                        strXml += "<" + rblCtrl.ID.ToLower() + " selectedtext=\"" + selText + "\"><![CDATA[";
+                        strXml += "<" + rblCtrl.ID.ToLower() + " selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                         strXml += rblCtrl.SelectedValue;
                     }
                     strXml += "]]></" + rblCtrl.ID.ToLower() + ">";
@@ -1677,17 +1677,17 @@ namespace NBrightCore.render
                             {
                                 if (dataTyp.ToLower() == "double")
                                 {
-                                    strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                                    strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"',' ') + "\"><![CDATA[";
                                     strXml += Utils.FormatToSave(dataValue, TypeCode.Double);
                                 }
                                 else if (dataTyp.ToLower() == "date")
                                 {
-                                    strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText + "\"><![CDATA[";
+                                    strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                                     strXml += Utils.FormatToSave(dataValue, TypeCode.DateTime);
                                 }
                                 else
                                 {
-                                    strXml += "<" + ajaxId + updateStatus + " selectedtext=\"" + selText + "\"><![CDATA[";
+                                    strXml += "<" + ajaxId + updateStatus + " selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
                                     strXml += dataValue;
                                 }
                                 strXml += "]]></" + ajaxId + ">";
