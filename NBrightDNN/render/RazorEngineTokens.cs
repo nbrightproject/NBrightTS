@@ -187,7 +187,7 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
-            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); $('#savedata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.selecteditlanguage').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);}); });</script>";
+            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); $('#savedata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.selecteditlanguage').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.fileclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.imageclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});   });</script>";
             return new RawString(strOut);
         }
 
