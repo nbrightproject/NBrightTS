@@ -580,6 +580,10 @@ namespace NBrightDNN
                                     {
                                         var xpath = "genxml/" + nod1.Name.ToLower() + "/" + nod.Name.ToLower();
                                         SetXmlProperty(xpath, nod.InnerText);
+                                        if (nod1.Name.ToLower() == "dropdownlist" && nod.Attributes["selectedtext"] != null)
+                                        {
+                                            SetXmlProperty(xpath + "/@selectedtext", nod.Attributes["selectedtext"].InnerText);
+                                        }
                                         if (nod.Attributes["datatype"] != null)
                                         {
                                             // just need to update the attr on the XML, the Formatting has been done by the GetGenXmlByAjax function.
