@@ -523,7 +523,18 @@ namespace NBrightDNN.render
         public IEncodedString BreakOf(NBrightInfo info, String xpath)
         {
             var strOut = info.GetXmlProperty(xpath);
-            strOut = System.Web.HttpUtility.HtmlEncode(strOut);
+            return BreakOf(strOut);
+        }
+
+        public IEncodedString BreakOf(IEncodedString strIn)
+        {
+            var strOut = System.Web.HttpUtility.HtmlEncode(strIn);
+            return BreakOf(strOut.ToString());
+        }
+
+        public IEncodedString BreakOf(String strIn)
+        {
+            var strOut = System.Web.HttpUtility.HtmlEncode(strIn);
             strOut = strOut.Replace(Environment.NewLine, "<br/>");
             strOut = strOut.Replace("\t", "&nbsp;&nbsp;&nbsp;");
             strOut = strOut.Replace("'", "&apos;");
