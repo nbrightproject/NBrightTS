@@ -528,8 +528,7 @@ namespace NBrightDNN.render
 
         public IEncodedString BreakOf(IEncodedString strIn)
         {
-            var strOut = System.Web.HttpUtility.HtmlEncode(strIn);
-            return BreakOf(strOut.ToString());
+            return BreakOf(strIn.ToString());
         }
 
         public IEncodedString BreakOf(String strIn)
