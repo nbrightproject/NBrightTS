@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Xml;
 using DotNetNuke.Common.Lists;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
@@ -741,7 +742,10 @@ namespace NBrightDNN
                                 var n = nod.Attributes["name"].Value;
                                 if (lang == "") lang = Utils.GetCurrentCulture();
                                 var rtnValue = Localization.GetString(n, relativefilename, PortalSettings.Current, lang, true);
-                                rtnList.Add(n.Replace(rKey + ".", ""), rtnValue);
+                                if (!rtnList.ContainsKey(n.Replace(rKey + ".", "")))
+                                {
+                                    rtnList.Add(n.Replace(rKey + ".", ""), rtnValue);
+                                }
                             }
                         }
                     }
@@ -752,6 +756,10 @@ namespace NBrightDNN
             return rtnList;
         }
 
+        public static void ClearPortalCache(int portalId)
+        {
+            DataCache.ClearPortalCache(portalId, true);
+        }
 
 
         #region "encryption"
