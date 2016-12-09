@@ -761,6 +761,10 @@ namespace NBrightDNN
             DataCache.ClearPortalCache(portalId, true);
         }
 
+        public static bool IsInRole(string role)
+        {
+            return UserController.Instance.GetCurrentUserInfo().IsInRole(role);
+        }
 
         #region "encryption"
 

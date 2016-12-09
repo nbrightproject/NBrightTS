@@ -91,7 +91,7 @@ namespace NBrightDNN.controls
 
             foreach (ModuleControlInfo c in p.ModuleConfiguration.ModuleDefinition.ModuleControls.Values)
             {
-                if ((c.ControlType != SecurityAccessLevel.Admin) | (UserController.GetCurrentUserInfo().IsInRole("Administrators")))
+                if ((c.ControlType != SecurityAccessLevel.Admin) | (DnnUtils.IsInRole("Administrators")))
                 {
 
                     var o = new ControlLinkInfo();

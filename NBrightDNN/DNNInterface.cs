@@ -22,20 +22,20 @@ namespace NBrightDNN
 
         public override int GetCurrentUserId()
         {
-            var objUser = UserController.GetCurrentUserInfo();
+            var objUser = UserController.Instance.GetCurrentUserInfo();
             return objUser.UserID;
         }
 
         public override String GetCurrentUserName()
         {
-            var objUser = UserController.GetCurrentUserInfo();
+            var objUser = UserController.Instance.GetCurrentUserInfo();
             if (objUser.Username == null) return "";
             return objUser.Username;
         }
 
         public override bool IsInRole(string testRole)
         {
-            var objUser = UserController.GetCurrentUserInfo();
+            var objUser = UserController.Instance.GetCurrentUserInfo();
             return objUser.IsInRole(testRole);
         }
 
