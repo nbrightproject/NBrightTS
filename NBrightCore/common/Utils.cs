@@ -1181,5 +1181,19 @@ public static string RemapInternationalCharToAscii(char c)
             return result;
         }
 
+        public static string DecodeInternalField(string toDecode)
+        {
+            if (toDecode != null)
+            {
+                string decodedString = toDecode.Replace("_x", "%u").Replace("_", "");
+                return HttpUtility.UrlDecode(decodedString);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
     }
 }
