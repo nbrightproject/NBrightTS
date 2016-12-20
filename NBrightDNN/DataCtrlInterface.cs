@@ -669,6 +669,7 @@ namespace NBrightDNN
         public String TemplateName { get; set; }
         public String ThemeFolder { get; set; }
 
+        public String Lang { get; set; }
 
 
         public NBrightRazor(List<object> list, Dictionary<String,String> settings, NameValueCollection urlParams)
