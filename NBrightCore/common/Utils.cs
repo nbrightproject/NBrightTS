@@ -511,7 +511,7 @@ namespace NBrightCore.common
 
         public static void SetCache(string CacheKey, object objObject)
         {
-            CmsProviderManager.Default.SetCache(CacheKey, objObject, DateTime.Now + new TimeSpan(0, 1, 0, 0));
+            CmsProviderManager.Default.SetCache(CacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
         }
 
         public static void SetCache(string CacheKey, object objObject, DateTime AbsoluteExpiration)
@@ -522,6 +522,46 @@ namespace NBrightCore.common
         public static void RemoveCache(string strCacheKey)
         {
             CmsProviderManager.Default.RemoveCache(strCacheKey);
+        }
+
+        /// <summary>
+        /// set cache and use a key list, so the cache objects can be cleared by RemoveCacheList()
+        /// </summary>
+        /// <param name="cacheKey">key for cache</param>
+        /// <param name="objObject">object to be cached</param>
+        /// <param name="cacheKeyList">optional keylist name</param>
+        public static void SetCacheList(string cacheKey, object objObject,string cacheKeyList = "")
+        {
+            SetCache(cacheKey, objObject);
+            if (cacheKeyList != "")
+            {
+                var lst = (List<string>)GetCache(cacheKeyList);
+                if (lst == null)
+                {
+                    lst = new List<string>();
+                }
+                if (!lst.Contains(cacheKey))
+                {
+                    lst.Add(cacheKey);
+                }
+                SetCache(cacheKeyList,lst);                    
+            }
+        }
+        /// <summary>
+        /// Remove all cachekey from cache that exist in the cachelist (add by SetCacheList())
+        /// </summary>
+        /// <param name="cacheKeyList">cachelist name</param>
+        public static void RemoveCacheList(string cacheKeyList)
+        {
+            var lst = (List<string>)GetCache(cacheKeyList);
+            if (lst != null)
+            {
+                foreach (var ck in lst)
+                {
+                    RemoveCache(ck);
+                }
+                RemoveCache(cacheKeyList);
+            }
         }
 
 
