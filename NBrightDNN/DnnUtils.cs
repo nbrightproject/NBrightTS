@@ -651,7 +651,7 @@ namespace NBrightDNN
                     {
                         var selectedvalue = "false";
                         if (selecttabidlist.Contains(tInfo.TabID.ToString(""))) selectedvalue = "true";
-                        rtnDataString += "{title: '" + tInfo.TabName + "', key:'" + tInfo.TabID + "', selected: " + selectedvalue + ", children: [";
+                        rtnDataString += "{title: '" + tInfo.TabName.Replace("'","&apos;") + "', key:'" + tInfo.TabID + "', selected: " + selectedvalue + ", children: [";
                         rtnDataString = GetTreeViewTabJSData(rtnDataString, tabList, level + 1, tInfo.TabID, selecttabidlist);
                         rtnDataString += "]},";
                     }
