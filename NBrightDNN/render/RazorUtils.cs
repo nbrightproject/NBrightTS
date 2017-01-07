@@ -10,6 +10,8 @@ using NBrightCore.render;
 using RazorEngine;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace NBrightDNN.render
 {
@@ -17,41 +19,55 @@ namespace NBrightDNN.render
     public static class RazorUtils
     {
 
-        public static String RazorRender(Object info, String razorTempl, String templateKey, Boolean debugMode = false)
+        public static string RazorRender(Object info, string razorTempl, string templateKey, Boolean debugMode = false)
         {
-            var service = (IRazorEngineService)HttpContext.Current.Application.Get("NBrightDNNIRazorEngineService");
-            if (service == null || debugMode)
+            var result = "";
+            try
             {
-                // do razor test
-                var config = new TemplateServiceConfiguration();
-                config.Debug = debugMode;
-                config.BaseTemplateType = typeof(RazorEngineTokens<>);
-                service = RazorEngineService.Create(config);
-                HttpContext.Current.Application.Set("NBrightDNNIRazorEngineService", service);
-            }
-            Engine.Razor = service;
-            var result = Engine.Razor.RunCompile(razorTempl, templateKey, null, info);
-
-            return result;
-        }
-
-        public static String RazorRender(List<Object> infoList, String razorTempl, String templateKey, Boolean debugMode = false)
-        {
-            var service = (IRazorEngineService)HttpContext.Current.Application.Get("NBrightDNNIRazorEngineService");
-            if (service == null || debugMode)
-            {
-                // do razor test
-                var config = new TemplateServiceConfiguration();
-                config.Debug = debugMode;
-                config.BaseTemplateType = typeof(RazorEngineTokens<>);
-                service = RazorEngineService.Create(config);
+                var service = (IRazorEngineService)HttpContext.Current.Application.Get("NBrightDNNIRazorEngineService");
+                if (service == null || debugMode)
+                {
+                    // do razor test
+                    var config = new TemplateServiceConfiguration();
+                    config.Debug = debugMode;
+                    config.BaseTemplateType = typeof(RazorEngineTokens<>);
+                    service = RazorEngineService.Create(config);
+                    HttpContext.Current.Application.Set("NBrightDNNIRazorEngineService", service);
+                }
                 Engine.Razor = service;
-                HttpContext.Current.Application.Set("NBrightDNNIRazorEngineService", service);
+                var israzorCached = Utils.GetCache("rzcache_" + templateKey); // get a cache flag for razor compile.
+                if (israzorCached == null || (string)israzorCached != razorTempl)
+                {
+                    result = Engine.Razor.RunCompile(razorTempl, GetMd5Hash(razorTempl), null, info);
+                    Utils.SetCache("rzcache_" + templateKey, razorTempl);
+                }
+                else
+                {
+                    result = Engine.Razor.Run(GetMd5Hash(razorTempl), null, info);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result = "<div>" + ex.Message + " templateKey='" + templateKey + "'</div>";
             }
 
-            var result = Engine.Razor.RunCompile(razorTempl, templateKey, null, infoList);
             return result;
         }
+
+        private static string GetMd5Hash(string input)
+        {
+            var md5 = MD5.Create();
+            var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            var hash = md5.ComputeHash(inputBytes);
+            var sb = new StringBuilder();
+            foreach (byte t in hash)
+            {
+                sb.Append(t.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+
 
         public static String RenderPaging(int totalRecords, int currentPage = 1, int pageSize = 20, String wrapperClass = "NBrightPagingDiv", String normalclass = "NBrightNormalPg", String selectclass = "NBrightSelectPg", String nextclass = "NBrightNextPg", String previousclass = "NBrightPrevPg", String linkclass = "cmdPg",String cssNextSection = "NBrightNextSection",String cssNextPage = "NBrightNextPg",String cssLastPage = "NBrightLastPg",String cssPrevSection = "NBrightPrevSection",String cssPrevPage = "NBrightPrevPg",String cssFirstPage = "NBrightFirstPg")
         {
