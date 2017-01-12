@@ -643,6 +643,7 @@ namespace NBrightDNN
             if (XMLDoc.SelectSingleNode("genxml/checkbox") == null) SetXmlProperty("genxml/checkbox", "");
             if (XMLDoc.SelectSingleNode("genxml/dropdownlist") == null) SetXmlProperty("genxml/dropdownlist", "");
             if (XMLDoc.SelectSingleNode("genxml/radiobuttonlist") == null) SetXmlProperty("genxml/radiobuttonlist", "");
+            if (XMLDoc.SelectSingleNode("genxml/checkboxlist") == null) SetXmlProperty("genxml/checkboxlist", "");
         }
 
         #endregion

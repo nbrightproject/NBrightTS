@@ -1709,27 +1709,24 @@ namespace NBrightCore.render
                     {
                         if (nod.Attributes != null)
                         {
-//                            var blnCbl = IsAjaxGroup(nod.Attributes["id"].InnerText);
-  //                          if (blnCbl)
-    //                        {
-                                var ajId = GetAjaxShortId(nod.Attributes["id"].InnerText);
-                                if (nod.Attributes["upd"] != null && !updateStatus2.ContainsKey(ajId)) updateStatus2.Add(ajId, " update=\"" + nod.Attributes["upd"].InnerText.ToLower() + "\"  ");
+                            var ajId = GetAjaxShortId(nod.Attributes["id"].InnerText);
+                            // we have no upd attr on the ajax xml so we need to assume that cbl always get updated via ajax as save.
+                            if (!updateStatus2.ContainsKey(ajId)) updateStatus2.Add(ajId, " update=\"save\"  ");
 
-                                var xmlNodeList2 = xmlDoc1.SelectNodes("root/f[@t='cbl']");
-                                if (xmlNodeList2 != null)
+                            var xmlNodeList2 = xmlDoc1.SelectNodes("root/f[@t='cbl']");
+                            if (xmlNodeList2 != null)
+                            {
+                                foreach (XmlNode nod2 in xmlNodeList2)
                                 {
-                                    foreach (XmlNode nod2 in xmlNodeList2)
+                                    if (nod2.Attributes != null)
                                     {
-                                        if (nod2.Attributes != null)
+                                        if (!l.Contains(ajId))
                                         {
-                                            if (!l.Contains(ajId))
-                                            {
-                                                l.Add(ajId);
-                                            }
+                                            l.Add(ajId);
                                         }
                                     }
                                 }
-      //                      }
+                            }
                         }
                     }
                 }
