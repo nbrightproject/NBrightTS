@@ -571,6 +571,47 @@ namespace NBrightDNN.render
             return new RawString(strOut.ToString());
         }
 
+        public IEncodedString FileSelectList(string selectedfilename, String relitiveRootFolder, String attributes = "", Boolean allowEmpty = true)
+        {
+            var nbi = new NBrightInfo(true);
+            nbi.SetXmlProperty("genxml/selectedfilename", selectedfilename);
+            return FileSelectList(nbi, "genxml/selectedfilename", relitiveRootFolder, attributes, allowEmpty);
+        }
+
+        public IEncodedString FileSelectList(NBrightInfo info, String xpath, String relitiveRootFolder, String attributes = "", Boolean allowEmpty = true)
+        {
+            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+
+            var mappathRootFolder = System.Web.Hosting.HostingEnvironment.MapPath(relitiveRootFolder);
+            var dirlist = System.IO.Directory.GetFiles(mappathRootFolder);
+            var tList = new List<String>();
+            foreach (var d in dirlist)
+            {
+                var dr = new System.IO.FileInfo(d);
+                tList.Add(dr.Name);
+            }
+            var strOut = "";
+
+            var upd = getUpdateAttr(xpath, attributes);
+            var id = getIdFromXpath(xpath);
+            strOut = "<select id='" + id + "' " + upd + " " + attributes + ">";
+            var c = 0;
+            var s = "";
+            if (allowEmpty) strOut += "    <option value=''></option>";
+            foreach (var tItem in tList)
+            {
+                if (info.GetXmlProperty(xpath) == tItem)
+                    s = "selected";
+                else
+                    s = "";
+                strOut += "    <option value='" + tItem + "' " + s + ">" + tItem + "</option>";
+            }
+            strOut += "</select>";
+
+            return new RawString(strOut);
+        }
+
+
         public IEncodedString FolderSelectList(NBrightInfo info, String xpath, String relitiveRootFolder, String attributes = "", Boolean allowEmpty = true)
         {
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
