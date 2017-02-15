@@ -180,6 +180,16 @@ namespace NBrightDNN.render
             return new RawString(strOut);
         }
 
+        /// <summary>
+        /// Display richText CKEditor for eding
+        /// NOTE: Dtaa is sent back tothe server via a temp filed.  This is populated by injected JS script by this token.
+        /// Validate triggers are: #savedata, .selecteditlanguage, .flieclick, .imageclick, .saverichtextdata
+        /// If the template savebutton or save event does NOT match any of these trrigegrs, use ".saverichtextdata" by adding it as a class onto the save button.
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="xpath"></param>
+        /// <param name="attributes"></param>
+        /// <returns></returns>
         public IEncodedString RichTextBox(NBrightInfo info, String xpath, String attributes = "")
         {
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
@@ -187,7 +197,7 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
-            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); $('#savedata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.selecteditlanguage').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.fileclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.imageclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});   });</script>";
+            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); $('#savedata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);}); $('.saverichtextdata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});   $('.selecteditlanguage').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.fileclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.imageclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});   });</script>";
             return new RawString(strOut);
         }
 
