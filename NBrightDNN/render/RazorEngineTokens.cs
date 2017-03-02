@@ -228,7 +228,7 @@ namespace NBrightDNN.render
 
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
-            var strOut = "    <input id='" + id + "' type='checkbox' " + getChecked(info, xpath, defaultValue) + " " + attributes + " " + upd + " /><label>" + text + "</label>";
+            var strOut = "    <input id='" + id + "' type='checkbox' " + getChecked(info, xpath, defaultValue) + " " + attributes + " " + upd + " /><label for='" + id + "'>" + text + "</label>";
             return new RawString(strOut);
         }
 
