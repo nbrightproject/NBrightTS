@@ -349,7 +349,6 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             strOut = "<select id='" + id + "' " + upd + " guidkey='tab' " + attributes + ">";
-            var c = 0;
             var s = "";
             if (allowEmpty) strOut += "    <option value=''></option>";                
             foreach (var tItem in tList)
@@ -383,7 +382,6 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             strOut = "<select id='" + id + "' " + upd + " guidkey='tab' " + attributes + ">";
-            var c = 0;
             var s = "";
             if (allowEmpty) strOut += "    <option value=''></option>";
             foreach (var tItem in tList)
