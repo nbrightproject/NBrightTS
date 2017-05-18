@@ -220,6 +220,16 @@ namespace NBrightDNN.render
             strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); editorvar" + id + ".on('change', function (event) { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value); }); });</script>";
             return new RawString(strOut);
         }
+        public IEncodedString CkEditorFull(NBrightInfo info, String xpath, String attributes = "")
+        {
+            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+
+            var upd = getUpdateAttr(xpath, attributes);
+            var id = getIdFromXpath(xpath);
+            var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
+            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/none.js' } ); editorvar" + id + ".on('change', function (event) { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value); }); });</script>";
+            return new RawString(strOut);
+        }
 
         public IEncodedString CheckBox(NBrightInfo info, String xpath,String text, String attributes = "", Boolean defaultValue = false)
         {
@@ -349,7 +359,6 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             strOut = "<select id='" + id + "' " + upd + " guidkey='tab' " + attributes + ">";
-            var c = 0;
             var s = "";
             if (allowEmpty) strOut += "    <option value=''></option>";                
             foreach (var tItem in tList)
@@ -383,7 +392,6 @@ namespace NBrightDNN.render
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             strOut = "<select id='" + id + "' " + upd + " guidkey='tab' " + attributes + ">";
-            var c = 0;
             var s = "";
             if (allowEmpty) strOut += "    <option value=''></option>";
             foreach (var tItem in tList)
