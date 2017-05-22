@@ -64,6 +64,19 @@ namespace NBrightCore.common
 
     public class Utils
     {
+        public static string UnCode(string codedval)
+        {
+            var strOut = "";
+            var s = codedval.Split('.');
+            foreach (var c in s)
+            {
+                if (c != "")
+                {
+                    strOut += (char)Convert.ToInt32(c);
+                }                
+            }
+            return strOut;
+        }
 
         public static void CreateFolder(string folderMapPath)
         {

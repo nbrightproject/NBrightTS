@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -1487,17 +1488,19 @@ namespace NBrightCore.render
                         }
                         else
                         {
-                            if (ajaxId.StartsWith("dbl"))
+                            if (ajaxId.StartsWith("dbl") || nod.Attributes["dt"]?.InnerText == "double")
                             {
                                 strXml += "<" + ajaxId + updateStatus + " datatype=\"double\"><![CDATA[";
                                 strXml += Utils.FormatToSave(nod.InnerText, TypeCode.Double);
+                                strXml += "]]></" + ajaxId + ">";
                             }
-                            else if (ajaxId.StartsWith("dte"))
+                            else if (ajaxId.StartsWith("dte") || nod.Attributes["dt"]?.InnerText == "date")
                             {
                                 strXml += "<" + ajaxId + updateStatus + " datatype=\"date\"><![CDATA[";
                                 strXml += Utils.FormatToSave(nod.InnerText, TypeCode.DateTime);
+                                strXml += "]]></" + ajaxId + ">";
                             }
-                            else if (ajaxId.StartsWith("html"))
+                            else if (ajaxId.StartsWith("html") || nod.Attributes["dt"]?.InnerText == "html")
                             {
                                 strXml += "<" + ajaxId + updateStatus + " datatype=\"html\"><![CDATA[";
                                 if (ignoresecurityfilter)
@@ -1508,6 +1511,13 @@ namespace NBrightCore.render
                                 {
                                     strXml += Security.FormatDisableScripting(nod.InnerText, filterlinks);
                                 }
+                                strXml += "]]></" + ajaxId + ">";
+                            }
+                            else if (nod.Attributes["dt"]?.InnerText == "coded")
+                            {
+                                strXml += "<" + ajaxId + updateStatus + " datatype=\"coded\">";
+                                strXml += nod.InnerText;
+                                strXml += "</" + ajaxId + ">";
                             }
                             else
                             {
@@ -1520,8 +1530,8 @@ namespace NBrightCore.render
                                 {
                                     strXml += Security.FormatDisableScripting(nod.InnerText,filterlinks);
                                 }
+                                strXml += "]]></" + ajaxId + ">";
                             }
-                            strXml += "]]></" + ajaxId + ">";
                         }
                     }
                 }
