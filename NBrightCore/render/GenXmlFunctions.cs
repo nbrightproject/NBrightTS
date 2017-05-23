@@ -2202,6 +2202,8 @@ namespace NBrightCore.render
                 if (String.IsNullOrEmpty(dataXml)) return null;
                 if (String.IsNullOrEmpty(xPath)) return null;
 
+                xPath = GetAjaxShortId(xPath);
+
                 var xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(dataXml);
                 var xmlNod = xmlDoc.SelectSingleNode(xPath);
