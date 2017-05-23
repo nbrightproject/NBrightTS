@@ -15,7 +15,7 @@ namespace NBrightCore.TemplateEngine
         public string HomeMapPath { get; private set; }
 
         private bool _isTemplateFound = false;
-
+        public string TemplateConfigMapPath { get; private set; }
 
         // Constructor
         public TemplateController(string homeMapPath, string themeFolder = "NBrightTemplates")
@@ -23,12 +23,13 @@ namespace NBrightCore.TemplateEngine
             HomeMapPath = homeMapPath.TrimEnd('\\');
             ThemeFolder = themeFolder.TrimEnd('\\');
             TemplateMapPath = string.Format("{0}\\{1}\\", homeMapPath.TrimEnd('\\'), themeFolder.TrimEnd('\\'));
+            TemplateConfigMapPath = string.Format("{0}\\{1}\\", homeMapPath.TrimEnd('\\'), "Config");
         }
 
         #region methods
 
 
-		private void SetupThemeFolders(string themefolder)
+        private void SetupThemeFolders(string themefolder)
 		{
 			var folderPath = string.Format("{0}\\{1}\\", TemplateMapPath.TrimEnd('\\'), themefolder);
 			if (!Directory.Exists(folderPath))
@@ -242,6 +243,16 @@ namespace NBrightCore.TemplateEngine
             if (objT.Exists() == false)
             {
                 templatepath = string.Format("{0}\\{1}\\{2}", TemplateMapPath.TrimEnd('\\'), "Default", templatename);
+                if (templatename.StartsWith("/") | templatename.StartsWith("{"))
+                {
+                    templatepath = HttpContext.Current.Server.MapPath(templatename);
+                    templatepath = templatepath.Replace("{LANG}", "Default");
+                }
+                objT = new Template(templatepath);
+            }
+            if (objT.Exists() == false)
+            {
+                templatepath = string.Format("{0}\\{1}\\{2}", TemplateConfigMapPath.TrimEnd('\\'), "Default", templatename);
                 if (templatename.StartsWith("/") | templatename.StartsWith("{"))
                 {
                     templatepath = HttpContext.Current.Server.MapPath(templatename);
