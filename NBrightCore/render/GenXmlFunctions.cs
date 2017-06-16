@@ -1446,8 +1446,9 @@ namespace NBrightCore.render
         /// <param name="xmlRootName"></param>
         /// <param name="ignoresecurityfilter"></param>
         /// <param name="filterlinks"></param>
+        /// <param name="editLang">convertion languagefor double.</param>
         /// <returns></returns>
-        public static string GetGenXmlByAjax(string xmlAjaxData, string originalXml, string xmlRootName = "genxml",bool ignoresecurityfilter = false, bool filterlinks = false)
+        public static string GetGenXmlByAjax(string xmlAjaxData, string originalXml, string xmlRootName = "genxml",bool ignoresecurityfilter = false, bool filterlinks = false, string editLang = "")
         {
 
             //load original XML for update  
@@ -1491,13 +1492,13 @@ namespace NBrightCore.render
                             if (ajaxId.StartsWith("dbl") || nod.Attributes["dt"]?.InnerText == "double")
                             {
                                 strXml += "<" + ajaxId + updateStatus + " datatype=\"double\"><![CDATA[";
-                                strXml += Utils.FormatToSave(nod.InnerText, TypeCode.Double);
+                                strXml += Utils.FormatToSave(nod.InnerText, TypeCode.Double, editLang);
                                 strXml += "]]></" + ajaxId + ">";
                             }
                             else if (ajaxId.StartsWith("dte") || nod.Attributes["dt"]?.InnerText == "date")
                             {
                                 strXml += "<" + ajaxId + updateStatus + " datatype=\"date\"><![CDATA[";
-                                strXml += Utils.FormatToSave(nod.InnerText, TypeCode.DateTime);
+                                strXml += Utils.FormatToSave(nod.InnerText, TypeCode.DateTime, editLang);
                                 strXml += "]]></" + ajaxId + ">";
                             }
                             else if (ajaxId.StartsWith("html") || nod.Attributes["dt"]?.InnerText == "html")
@@ -1569,12 +1570,12 @@ namespace NBrightCore.render
                                 if (dataTyp.ToLower() == "double")
                                 {
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                    strXml += Utils.FormatToSave(nod.InnerText, TypeCode.Double);
+                                    strXml += Utils.FormatToSave(nod.InnerText, TypeCode.Double, editLang);
                                 }
                                 else if (dataTyp.ToLower() == "date")
                                 {
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                    strXml += Utils.FormatToSave(nod.InnerText, TypeCode.DateTime);
+                                    strXml += Utils.FormatToSave(nod.InnerText, TypeCode.DateTime, editLang);
                                 }
                                 else if (dataTyp.ToLower() == "email")
                                 {
@@ -1688,12 +1689,12 @@ namespace NBrightCore.render
                                 if (dataTyp.ToLower() == "double")
                                 {
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"',' ') + "\"><![CDATA[";
-                                    strXml += Utils.FormatToSave(dataValue, TypeCode.Double);
+                                    strXml += Utils.FormatToSave(dataValue, TypeCode.Double, editLang);
                                 }
                                 else if (dataTyp.ToLower() == "date")
                                 {
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\" selectedtext=\"" + selText.Replace('"', ' ') + "\"><![CDATA[";
-                                    strXml += Utils.FormatToSave(dataValue, TypeCode.DateTime);
+                                    strXml += Utils.FormatToSave(dataValue, TypeCode.DateTime, editLang);
                                 }
                                 else
                                 {
@@ -1856,12 +1857,12 @@ namespace NBrightCore.render
                                     if (dataTyp.ToLower() == "double")
                                     {
                                         strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                        strXml += Utils.FormatToSave(dataValue, TypeCode.Double);
+                                        strXml += Utils.FormatToSave(dataValue, TypeCode.Double, editLang);
                                     }
                                     else if (dataTyp.ToLower() == "date")
                                     {
                                         strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                        strXml += Utils.FormatToSave(dataValue, TypeCode.DateTime);
+                                        strXml += Utils.FormatToSave(dataValue, TypeCode.DateTime, editLang);
                                     }
                                     else
                                     {

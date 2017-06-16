@@ -175,20 +175,26 @@ namespace NBrightCore.common
 
         public static string FormatToSave(string inpData)
         {
-            return FormatToSave(inpData, TypeCode.String);
+            return FormatToSave(inpData, TypeCode.String,"");
         }
 
         public static string FormatToSave(string inpData, TypeCode dataTyp)
         {
+            return FormatToSave(inpData, TypeCode.String,"");
+        }
+
+        public static string FormatToSave(string inpData, TypeCode dataTyp, string editlang)
+        {
+            if (editlang == "") editlang = GetCurrentCulture();
             if (String.IsNullOrEmpty(inpData))
                 return inpData;
             switch (dataTyp)
             {
                 case TypeCode.Double:
                     //always save CultureInfo.InvariantCulture format to the XML
-                    if (IsNumeric(inpData, GetCurrentCulture()))
+                    if (IsNumeric(inpData, editlang))
                     {
-                        var cultureInfo = new CultureInfo(GetCurrentCulture(), true);
+                        var cultureInfo = new CultureInfo(editlang, true);
                         var num = Convert.ToDouble(inpData, cultureInfo);
                         return num.ToString(CultureInfo.InvariantCulture);
                     }
