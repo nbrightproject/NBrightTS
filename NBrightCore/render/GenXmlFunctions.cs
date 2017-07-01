@@ -1438,6 +1438,11 @@ namespace NBrightCore.render
             return xmlData.Replace("**CDATASTART**","<![CDATA[").Replace("**CDATAEND**","]]>");
         }
 
+        public static string GetGenXmlByAjax(string xmlAjaxData, string originalXml, string xmlRootName = "genxml", bool ignoresecurityfilter = false, bool filterlinks = false)
+        {
+            return GetGenXmlByAjax(xmlAjaxData, originalXml, xmlRootName, ignoresecurityfilter, filterlinks, "");
+        }
+
         /// <summary>
         /// Convert ajax xml passed form client into DB XML strucutre.
         /// </summary>
