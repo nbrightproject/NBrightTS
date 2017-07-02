@@ -1440,7 +1440,7 @@ namespace NBrightCore.render
 
         public static string GetGenXmlByAjax(string xmlAjaxData, string originalXml, string xmlRootName = "genxml", bool ignoresecurityfilter = false, bool filterlinks = false)
         {
-            return GetGenXmlByAjax(xmlAjaxData, originalXml, xmlRootName, ignoresecurityfilter, filterlinks, "");
+            return GetGenXmlByAjaxLang(xmlAjaxData, originalXml, xmlRootName, ignoresecurityfilter, filterlinks, "");
         }
 
         /// <summary>
@@ -1453,7 +1453,7 @@ namespace NBrightCore.render
         /// <param name="filterlinks"></param>
         /// <param name="editLang">convertion languagefor double.</param>
         /// <returns></returns>
-        public static string GetGenXmlByAjax(string xmlAjaxData, string originalXml, string xmlRootName = "genxml",bool ignoresecurityfilter = false, bool filterlinks = false, string editLang = "")
+        public static string GetGenXmlByAjaxLang(string xmlAjaxData, string originalXml, string xmlRootName = "genxml",bool ignoresecurityfilter = false, bool filterlinks = false, string editLang = "")
         {
 
             //load original XML for update  
