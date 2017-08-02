@@ -305,14 +305,15 @@ namespace NBrightDNN
 
         public void FillEmptyLanguageFields(int baseParentItemId, String baseLang)
         {
-            var baseInfo = GetDataLang(baseParentItemId, baseLang);
+            var baseInfo = GetDataLang(baseParentItemId, baseLang, true); // do NOT take cache
             if (baseInfo != null)
             {              
                 foreach (var toLang in DnnUtils.GetCultureCodeList(baseInfo.PortalId))
                 {
                     if (toLang != baseInfo.Lang)
                     {
-                        var dlang = GetDataLang(baseParentItemId, toLang);
+                        var updatedata = false;
+                        var dlang = GetDataLang(baseParentItemId, toLang, true); // do NOT take cache
                         if (dlang != null)
                         {
                             var nodList = baseInfo.XMLDoc.SelectNodes("genxml/textbox/*");
@@ -325,6 +326,7 @@ namespace NBrightDNN
                                         if (dlang.GetXmlProperty("genxml/textbox/" + nod.Name) == "")
                                         {
                                             dlang.SetXmlProperty("genxml/textbox/" + nod.Name, nod.InnerText);
+                                            updatedata = true;
                                         }
                                     }
                                 }
@@ -357,6 +359,7 @@ namespace NBrightDNN
                                                         }
                                                     }
                                                     dlang.SetXmlProperty("genxml/imgs/genxml[" + i + "]/textbox/" + nod.Name, nod.InnerText);
+                                                    updatedata = true;
                                                 }
                                             }
                                         }
@@ -391,8 +394,8 @@ namespace NBrightDNN
                                                             dlang.AddXmlNode(baseXml.OuterXml, "genxml", "genxml/docs");
                                                         }
                                                     }
-
                                                     dlang.SetXmlProperty("genxml/docs/genxml[" + i + "]/textbox/" + nod.Name, nod.InnerText);
+                                                    updatedata = true;
                                                 }
                                             }
                                         }
@@ -400,7 +403,10 @@ namespace NBrightDNN
                                 }
                             }
                         }
-                        Update(dlang);
+                        if (updatedata)
+                        {
+                            Update(dlang);
+                        }
                     }
                 }
             }
