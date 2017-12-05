@@ -1584,17 +1584,11 @@ namespace NBrightCore.render
                                 }
                                 else if (dataTyp.ToLower() == "email")
                                 {
-                                    //create spamsafe version
-                                    strXml += "<" + ajaxId + "_spamsafe" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                    strXml += Utils.CloakText(nod.InnerText);
-                                    strXml += "]]></" + ajaxId + "_spamsafe" + ">";
-                                    //create spamsafe mailto version
-                                    strXml += "<" + ajaxId + "_mailto" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                    strXml += Utils.CloakText(String.Format("<a href='mailto{1}{0}>{0}'></a>", nod.InnerText, ":"));
-                                    strXml += "]]></" + ajaxId + "_mailto" + ">";
+                                    //forget spamsafe version, this is easy to do in razor template.
+                                    //  @{  var emailout = NBrightCore.common.Utils.CloakText("<a href='mailto:" + @info.GetXmlProperty("genxml/textbox/email") + "'>testing email</a>"); }	@HtmlOf(emailout)
                                     //create normal version
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
-                                    strXml += Security.FormatDisableScripting(nod.InnerText);
+                                    strXml += nod.InnerText;
                                 }
                                 else
                                 {
