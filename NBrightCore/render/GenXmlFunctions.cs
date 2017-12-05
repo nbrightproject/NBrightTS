@@ -1585,13 +1585,13 @@ namespace NBrightCore.render
                                 else if (dataTyp.ToLower() == "email")
                                 {
                                     //create spamsafe version
-                                    strXml += "<" + ajaxId + "_spamsafe" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
+                                    strXml += "<" + ajaxId + "-spamsafe" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
                                     strXml += Utils.CloakText(nod.InnerText);
-                                    strXml += "]]></" + ajaxId + "_spamsafe" + ">";
+                                    strXml += "]]></" + ajaxId + "-spamsafe" + ">";
                                     //create spamsafe mailto version
-                                    strXml += "<" + ajaxId + "_mailto" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
+                                    strXml += "<" + ajaxId + "-mailto" + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
                                     strXml += Utils.CloakText(String.Format("<a href='mailto{1}{0}>{0}'></a>", nod.InnerText, ":"));
-                                    strXml += "]]></" + ajaxId + "_mailto" + ">";
+                                    strXml += "]]></" + ajaxId + "-mailto" + ">";
                                     //create normal version
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
                                     strXml += Security.FormatDisableScripting(nod.InnerText);
