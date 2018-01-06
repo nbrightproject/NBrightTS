@@ -672,6 +672,7 @@ namespace NBrightDNN
 
         public String Lang { get; set; }
 
+        public NBrightInfo HeaderData { get; set; }
 
         public NBrightRazor(List<object> list, Dictionary<String,String> settings, NameValueCollection urlParams)
         {

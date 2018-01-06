@@ -233,6 +233,18 @@ namespace NBrightCore.TemplateEngine
 
         public Template GetTemplate(string templatename, string lang)
         {
+            return GetTemplate(templatename,lang,"Default");
+        }
+
+        /// <summary>
+        /// Get template from language, System or Portal level 
+        /// </summary>
+        /// <param name="templatename">Template Name</param>
+        /// <param name="lang">language</param>
+        /// <param name="themesubfolder">the subfolder of the theme, usually "Default","css","resx","js","img".  But can be anything. </param>
+        /// <returns></returns>
+        public Template GetTemplate(string templatename, string lang, string themesubfolder)
+        {
             var templatepath = string.Format("{0}\\{1}\\{2}", TemplateMapPath.TrimEnd('\\'), lang, templatename);
             if (templatename.StartsWith("/") | templatename.StartsWith("{"))
             {
@@ -242,21 +254,21 @@ namespace NBrightCore.TemplateEngine
             var objT = new Template(templatepath);
             if (objT.Exists() == false)
             {
-                templatepath = string.Format("{0}\\{1}\\{2}", TemplateMapPath.TrimEnd('\\'), "Default", templatename);
+                templatepath = string.Format("{0}\\{1}\\{2}", TemplateMapPath.TrimEnd('\\'), themesubfolder, templatename);
                 if (templatename.StartsWith("/") | templatename.StartsWith("{"))
                 {
                     templatepath = HttpContext.Current.Server.MapPath(templatename);
-                    templatepath = templatepath.Replace("{LANG}", "Default");
+                    templatepath = templatepath.Replace("{LANG}", themesubfolder);
                 }
                 objT = new Template(templatepath);
             }
             if (objT.Exists() == false)
             {
-                templatepath = string.Format("{0}\\{1}\\{2}", TemplateConfigMapPath.TrimEnd('\\'), "Default", templatename);
+                templatepath = string.Format("{0}\\{1}\\{2}", TemplateConfigMapPath.TrimEnd('\\'), themesubfolder, templatename);
                 if (templatename.StartsWith("/") | templatename.StartsWith("{"))
                 {
                     templatepath = HttpContext.Current.Server.MapPath(templatename);
-                    templatepath = templatepath.Replace("{LANG}", "Default");
+                    templatepath = templatepath.Replace("{LANG}", themesubfolder);
                 }
                 objT = new Template(templatepath);
             }
