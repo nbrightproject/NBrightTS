@@ -18,20 +18,11 @@
 <%@ Register TagPrefix="dnn" TagName="META" Src="~/Admin/Skins/Meta.ascx" %>
 <dnn:Meta runat="server" Name="viewport" Content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <div class="pagemaster">
-<div class="pagelarge">
-
 <div class="page">
-  <div class="langpane"><dnn:LANGUAGE runat="server" id="dnnLANGUAGE" showMenu="False" showLinks="True" SelectedItemTemplate="&lt;a class='langsel' href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" AlternateTemplate="&lt;a href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" ItemTemplate="&lt;a href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" /></div>
-  <div class="logopane"><img src="<%= SkinPath %>logo-nbright.png" /></div>
-</div>
-<div class="toppane"></div>
-<div class="content">
-  <div class="page">
-    <div id="ContentPane" runat="server" class="contentpane"></div>
-  </div>
-</div>
-<div class="bottom"><div class="footer">NBright &copy; DNN Solutions</div></div>
+
+<div class="langpane"><dnn:LANGUAGE runat="server" id="dnnLANGUAGE" showMenu="False" showLinks="True" SelectedItemTemplate="&lt;a class='langsel' href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" AlternateTemplate="&lt;a href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" ItemTemplate="&lt;a href='[URL]' title='[CULTURE:NATIVENAME]'&gt;[CULTURE:TWOLETTERISOCODE]&lt;/a&gt;" /></div>
+<div id="ContentPane" runat="server" class="contentpane"></div>
+<div class="bottom"><div class="footer"><span>NB-Mod &copy;</span><i class="nwb-icon"></i><span>by Nevoweb</span></div></div>
 
 </div>
 </div>
-

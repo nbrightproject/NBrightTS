@@ -318,6 +318,10 @@ namespace NBrightCore.common
                 fs = new FileStream(fullFileName, FileMode.Create, FileAccess.Write);
                 fs.Write(buffer, 0, buffer.Length);
             }
+            catch (Exception e)
+            {
+                // ignore, stop eror here, not important if locked.
+            }
             finally
             {
                 if (fs != null)
@@ -337,6 +341,11 @@ namespace NBrightCore.common
                 if (!File.Exists(filePath)) return "";
                 reader = File.OpenText(filePath);
                 fileContent = reader.ReadToEnd();
+            }
+            catch (Exception e)
+            {
+                // ignore, stop eror here, not important if locked.
+                fileContent = "";
             }
             finally
             {

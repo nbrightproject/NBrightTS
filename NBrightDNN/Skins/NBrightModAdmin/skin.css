@@ -7,28 +7,21 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 24px;
-  background: #f6f6f6;
+  background: #f6f6f6 !important;
 }
 .pagemaster {
   width: 100%;
   position: relative;
   z-index: 1;
-}
-.pagelarge {
-  background: white;
-  width: 1154px;
-  position: relative;
-  margin: 0 auto;
-  -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  padding: 40px 0 0 0;
 }
 .page {
-  width: 990px;
+  background: white;
+  width: 1240px;
   position: relative;
   margin: 0 auto;
 }
-.langpane {float:right;margin:20px 0 0 0;text-transform:uppercase;font-size:11px;}
+.langpane {position:absolute;top:20px;right:20px;text-transform:uppercase;font-size:11px;}
 .langpane a:link, .langpane a:visited, .langpane a:active {
   background: rgb(80, 80, 80);/* fallback color */
   background: rgba(0, 0, 0, 0.2);
@@ -46,20 +39,13 @@ body {
   text-align: center;
 }
 .langpane a:hover, a.langsel:link, a.langsel:visited, a.langsel:active, a.langsel:hover {background:rgb(80, 80, 80);/* fallback color */background:rgba(0, 0, 0, 0.4);color:white;text-decoration:none;}
-.logopane {float:left;}
-.logopane img {margin:40px 0 20px 0;}
-.toppane {clear:both;}
-.content {background-color:white;padding:0 0 80px 0;}
-.contentpane {padding:40px 0 0 0;}
-.bottom {background-color:#383637;padding:0 0 60px 0;color:white;font-size:13px;}
-
-/* FOOTER */
-.footer {padding:14px 0 0 0;color:#929292;font-size:12px;clear:both;text-align:center;}
-.footer span.SkinObject {font-weight:300;color:#929292;font-size:12px;}
-.footer a.SkinObject:link, .footer a.SkinObject:visited, .footer a.SkinObject:active {font-weight:300;color:white;text-decoration:none;font-size:12px;}
-.footer a.SkinObject:hover {font-weight:300;color:#bdcd00;text-decoration:none;}
+.contentpane {padding:80px 40px !important;}
+.bottom {background:#f6f6f6;padding:20px 0;text-align:center;}
+.footer {color:#929292;font-size:12px;}
+.footer span {display:inline-block;height:24px;line-height:24px;vertical-align:middle;}
 
 /* MISC */
+i.nwb-icon {display:inline-block;width:24px;height:24px;background:url("nwb-icon.png") no-repeat;vertical-align:middle;margin:0 5px;}
 .clearfix {clear:both;}
 
 /* Password Information */
@@ -126,14 +112,6 @@ blockquote {font-style:italic;font-size:20px;line-height:30px;color:#989898;font
 .Normal ol ol li {list-style-type:lower-alpha;}
 .Normal ol ol ol li {list-style-type:lower-roman;}
 .Normal ol ul li {list-style-type:disc;}
-.contentpane ul, .contentpane2 ul {padding:0;margin:30px 0;}
-.contentpane ul li, .contentpane2 ul li {list-style-type:none;background:url("ticklightbg.png") no-repeat 0 4px;padding-left:24px;margin-bottom:6px;overflow:hidden;}
-.rightpane ul {padding:0;}
-.rightpane ul li {list-style-type:none;padding:5px 0;border-bottom:#e8e8e8 solid 1px;}
-.rightpane ul li:last-child {border-bottom:0;}
-.bottom ul {padding:0;}
-.bottom ul li {list-style-type:none;padding:5px 0;border-bottom:#636362 solid 1px;}
-.bottom ul li:last-child {border-bottom:0;}
 hr {border:0;height:10px;background:#f3f3f3;margin:20px 0;}
 /* DEBUG */
 /* Module titles and text don�t always extend to the right edge of the container making it easier to spot. */
@@ -143,21 +121,14 @@ hr {border:0;height:10px;background:#f3f3f3;margin:20px 0;}
 /************************************************************************************
 MEDIA QUERIES
 *************************************************************************************/
-/* for 1180px and less */
-@media screen and (max-width:1180px) {
-.pagelarge {width:1022px;}
+/* for 1240px and less */
+@media screen and (max-width:1240px) {
+.page {width:1000px;}
 }
 /* for 640px and less - Only portrait for retina display */
 @media all and (max-width:640px),
             screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px) and (orientation: portrait),
             screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1280px) and (orientation: portrait) {
-.pagelarge {width:auto;}
-.page {width:auto;padding:0 24px;}
-.logopane {float:none;}
-.logopane img {max-width:100%;height:auto;margin:20px 0;}
-.langpane {float:none;margin:0;}
-.content {padding:0 0 48px 0;}
-.content img {max-width:100%;height:auto;}
-.bottom {padding:0 0 24px 0;}
+.page {width:auto;}
 }
 
