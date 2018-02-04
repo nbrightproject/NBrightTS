@@ -53,6 +53,10 @@
     <Compile Include="ClassInfo.cs" />
     <Compile Include="common\Cookie.cs" />
     <Compile Include="controls\PagingCtrl.cs" />
+    <Compile Include="ftp\DefaultDateTimeProvider.cs" />
+    <Compile Include="ftp\IDateTimeProvider.cs" />
+    <Compile Include="ftp\myFTP.cs" />
+    <Compile Include="ftp\myFTPFileInfo.cs" />
     <Compile Include="images\ImgUtils.cs" />
     <Compile Include="images\ImgWaterMark.cs" />
     <Compile Include="common\PageIncludes.cs" />
