@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Xml;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.Entities.Portals;
 using NBrightCore.common;
 using NBrightCore.render;
+using NBrightDNN.render;
 using NBrightDNN.SqlDataProvider;
-
 
 namespace NBrightDNN
 {
@@ -409,6 +411,82 @@ namespace NBrightDNN
                         }
                     }
                 }
+            }
+        }
+
+        public NBrightInfo GetSinglePageData(string GuidKey, string typeCode, string lang)
+        {
+            DataCache.ClearCache(); // clear ALL cache.
+            var info = GetByGuidKey(PortalSettings.Current.PortalId, -1, typeCode, GuidKey);
+            if (info == null)
+            {
+                // create record if not in DB
+                info = new NBrightInfo(true);
+                info.GUIDKey = GuidKey;
+                info.TypeCode = typeCode;
+                info.ModuleId = -1;
+                info.PortalId = PortalSettings.Current.PortalId;
+                info.ItemID = Update(info);
+            }
+            var nbilang = GetDataLang(info.ItemID, lang);
+            if (nbilang == null)
+            {
+                // create lang records if not in DB
+                foreach (var lg in DnnUtils.GetCultureCodeList(PortalSettings.Current.PortalId))
+                {
+                    nbilang = GetDataLang(info.ItemID, lg);
+                    if (nbilang == null)
+                    {
+                        nbilang = new NBrightInfo(true);
+                        nbilang.GUIDKey = "";
+                        nbilang.TypeCode = typeCode + "LANG";
+                        nbilang.ParentItemId = info.ItemID;
+                        nbilang.Lang = lg;
+                        nbilang.ModuleId = -1;
+                        nbilang.PortalId = PortalSettings.Current.PortalId;
+                        nbilang.ItemID = Update(nbilang);
+                    }
+                }
+            }
+
+            // do edit field data if a itemid has been selected
+            var nbi = Get(info.ItemID, lang);
+            return nbi;
+        }
+
+        public string SaveSinglePageData(HttpContext context)
+        {
+            try
+            {
+
+               //get uploaded params
+                var ajaxInfo = RazorUtils.GetAjaxFields(context);
+
+                var itemid = ajaxInfo.GetXmlProperty("genxml/hidden/itemid");
+                if (Utils.IsNumeric(itemid))
+                {
+                    var editlang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang");
+                    var nbi = Get(Convert.ToInt32(itemid));
+                    if (nbi != null)
+                    {
+                        // get data passed back by ajax
+                        var strIn = HttpUtility.UrlDecode(Utils.RequestParam(context, "inputxml"));
+                        // update record with ajax data
+                        nbi.UpdateAjax(strIn);
+                        Update(nbi);
+
+                        // do langauge record
+                        var nbi2 = GetDataLang(Convert.ToInt32(itemid), editlang);
+                        nbi2.UpdateAjax(strIn);
+                        Update(nbi2);
+                    }
+                    DataCache.ClearCache(); // clear ALL cache.
+                }
+                return "";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
             }
         }
 

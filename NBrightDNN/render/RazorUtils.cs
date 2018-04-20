@@ -145,6 +145,22 @@ namespace NBrightDNN.render
             return strOut;
         }
 
+        public static NBrightInfo GetAjaxFields(HttpContext context, bool ignoresecurityfilter = false, bool filterlinks = false)
+        {
+            var strIn = HttpUtility.UrlDecode(Utils.RequestParam(context, "inputxml"));
+            return GetAjaxFields(strIn, "", ignoresecurityfilter, filterlinks);
+        }
+
+        public static NBrightInfo GetAjaxFields(String ajaxData, String mergeWithXml = "", bool ignoresecurityfilter = false, bool filterlinks = false)
+        {
+            string xmlData = GenXmlFunctions.GetGenXmlByAjax(ajaxData, mergeWithXml, "genxml", ignoresecurityfilter, filterlinks);
+            var objInfo = new NBrightInfo();
+
+            objInfo.ItemID = -1;
+            objInfo.TypeCode = "AJAXDATA";
+            objInfo.XMLData = xmlData;
+            return objInfo;
+        }
 
     }
 
