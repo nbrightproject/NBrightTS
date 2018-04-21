@@ -15,11 +15,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Linq;
-using NBrightCore.providers;
+using NBrightCorev2.providers;
 using Image = System.Drawing.Image;
 
 
-namespace NBrightCore.common
+namespace NBrightCorev2.common
 {
 
     public class UtilsEmail

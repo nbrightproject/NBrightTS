@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 
-namespace NBrightCore.providers
+namespace NBrightCorev2.providers
 {
     public abstract class GenXProvider : ProviderBase
     {

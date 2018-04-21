@@ -6,12 +6,12 @@ using System.Xml;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
-using NBrightCore.common;
-using NBrightCore.render;
-using NBrightDNN.render;
-using NBrightDNN.SqlDataProvider;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
+using NBrightDNNv2.render;
+using NBrightDNNv2.SqlDataProvider;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
 
     public class NBrightDataController : NBrightDataCtrlInterface

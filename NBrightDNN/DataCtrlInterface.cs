@@ -12,12 +12,12 @@ using System.Xml.Serialization;
 using DotNetNuke.Common;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
-using NBrightCore.common;
-using NBrightCore.render;
-using NBrightDNN.controls;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
+using NBrightDNNv2.controls;
 using RazorEngine.Text;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
     public abstract class NBrightDataCtrlInterface
     {

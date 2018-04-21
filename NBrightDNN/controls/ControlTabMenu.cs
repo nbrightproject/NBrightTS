@@ -10,9 +10,9 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Localization;
-using NBrightCore.common;
+using NBrightCorev2.common;
 
-namespace NBrightDNN.controls
+namespace NBrightDNNv2.controls
 {
     public class ControlTabMenu : UserControlBase
     {

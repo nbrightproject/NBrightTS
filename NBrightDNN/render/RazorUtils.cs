@@ -5,15 +5,15 @@ using System.Web;
 using System.Xml;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
-using NBrightCore.common;
-using NBrightCore.render;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
 using RazorEngine;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
 
     public static class RazorUtils
@@ -24,7 +24,7 @@ namespace NBrightDNN.render
             var result = "";
             try
             {
-                var service = (IRazorEngineService)HttpContext.Current.Application.Get("NBrightDNNIRazorEngineService");
+                var service = (IRazorEngineService)HttpContext.Current.Application.Get("NBrightDNNv2IRazorEngineService");
                 if (service == null || debugMode)
                 {
                     // do razor test
@@ -32,7 +32,7 @@ namespace NBrightDNN.render
                     config.Debug = debugMode;
                     config.BaseTemplateType = typeof(RazorEngineTokens<>);
                     service = RazorEngineService.Create(config);
-                    HttpContext.Current.Application.Set("NBrightDNNIRazorEngineService", service);
+                    HttpContext.Current.Application.Set("NBrightDNNv2IRazorEngineService", service);
                 }
                 Engine.Razor = service;
                 var israzorCached = Utils.GetCache("rzcache_" + templateKey); // get a cache flag for razor compile.

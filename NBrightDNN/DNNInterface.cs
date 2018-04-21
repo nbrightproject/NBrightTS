@@ -12,10 +12,10 @@ using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.Cache;
 using DotNetNuke.Services.Localization;
-using NBrightCore.common;
-using NBrightCore.providers;
+using NBrightCorev2.common;
+using NBrightCorev2.providers;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
     public class DnnInterface : CmsProvider
     {

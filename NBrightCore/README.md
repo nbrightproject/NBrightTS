@@ -1,7 +1,7 @@
-# NBrightCore
+# NBrightCorev2
 NBright Template System Core
 
-NBrightCore DLL
+NBrightCorev2 DLL
 This project is an Dynamic Link Library project created for NBrightStore.
 
 It forms the basic functionality for the NBright Template system.

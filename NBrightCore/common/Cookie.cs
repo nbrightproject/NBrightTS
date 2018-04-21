@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Web;
 
-namespace NBrightCore.common
+namespace NBrightCorev2.common
 {
     public class Cookie
     {

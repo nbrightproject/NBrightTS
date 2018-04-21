@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
-namespace NBrightCore.common
+namespace NBrightCorev2.common
 {
     public class XslUtils
     {

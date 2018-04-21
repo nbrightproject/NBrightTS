@@ -1,7 +1,7 @@
 ﻿using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
-namespace NBrightCore.common
+namespace NBrightCorev2.common
 {
     public class PageIncludes
     {

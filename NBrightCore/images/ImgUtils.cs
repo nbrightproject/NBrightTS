@@ -3,9 +3,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using NBrightCore.common;
+using NBrightCorev2.common;
 
-namespace NBrightCore.images
+namespace NBrightCorev2.images
 {
     public class ImgUtils
     {

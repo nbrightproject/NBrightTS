@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
-using NBrightCore.common;
-using NBrightCore.images;
+using NBrightCorev2.common;
+using NBrightCorev2.images;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
     /// <summary>
     /// Summary description for NBrightThumb1

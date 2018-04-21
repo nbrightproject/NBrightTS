@@ -2,9 +2,9 @@
 using System.Reflection;
 using System.Web.UI;
 using System.Xml;
-using NBrightCore.render;
+using NBrightCorev2.render;
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
     [ToolboxData("<{0}:GenFileUpload runat=server></{0}:GenTextEditor>")]
     public sealed class GenFileUpload : UserControl

@@ -15,11 +15,11 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Serialization;
-using NBrightCore.common;
-using NBrightCore.images;
-using NBrightCore.providers;
+using NBrightCorev2.common;
+using NBrightCorev2.images;
+using NBrightCorev2.providers;
 
-namespace NBrightCore.render
+namespace NBrightCorev2.render
 {
 
     //public delegate void UploadFileCompleted();
@@ -1585,7 +1585,7 @@ namespace NBrightCore.render
                                 else if (dataTyp.ToLower() == "email")
                                 {
                                     //forget spamsafe version, this is easy to do in razor template.
-                                    //  @{  var emailout = NBrightCore.common.Utils.CloakText("<a href='mailto:" + @info.GetXmlProperty("genxml/textbox/email") + "'>testing email</a>"); }	@HtmlOf(emailout)
+                                    //  @{  var emailout = NBrightCorev2.common.Utils.CloakText("<a href='mailto:" + @info.GetXmlProperty("genxml/textbox/email") + "'>testing email</a>"); }	@HtmlOf(emailout)
                                     //create normal version
                                     strXml += "<" + ajaxId + updateStatus + " datatype=\"" + dataTyp.ToLower() + "\"><![CDATA[";
                                     strXml += nod.InnerText;

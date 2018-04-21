@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Xml;
-using NBrightCore.common;
+using NBrightCorev2.common;
 
-namespace NBrightCore.TemplateEngine
+namespace NBrightCorev2.TemplateEngine
 {
     public class TemplateGetter
     {

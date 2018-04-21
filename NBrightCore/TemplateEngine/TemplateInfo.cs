@@ -1,5 +1,5 @@
 
-namespace NBrightCore.TemplateEngine
+namespace NBrightCorev2.TemplateEngine
 {
     public class TemplateInfo
     {

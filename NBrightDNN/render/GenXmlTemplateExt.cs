@@ -5,13 +5,13 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
-using NBrightCore;
-using NBrightCore.common;
-using NBrightCore.providers;
-using NBrightCore.render;
+using NBrightCorev2;
+using NBrightCorev2.common;
+using NBrightCorev2.providers;
+using NBrightCorev2.render;
 using DotNetNuke.Entities.Users;
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
     public class GenXmlTemplateExt : GenXProvider
     {

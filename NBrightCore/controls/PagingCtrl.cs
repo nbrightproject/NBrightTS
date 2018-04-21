@@ -5,9 +5,9 @@ using System.IO;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NBrightCore.render;
+using NBrightCorev2.render;
 
-namespace NBrightCore.controls 
+namespace NBrightCorev2.controls 
 {
     public class PagingCtrl:  WebControl
     {

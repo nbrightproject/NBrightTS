@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using System.Runtime.Serialization.Json;
 
 
-namespace NBrightCore
+namespace NBrightCorev2
 {
     public class CheckBoxStats
     {

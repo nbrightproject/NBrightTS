@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NBrightCore.providers
+namespace NBrightCorev2.providers
 {
     public class CmsProviderManager
     {
@@ -22,8 +22,8 @@ namespace NBrightCore.providers
                 // dynamically create provider
         private static void CreateProvider()
         {
-            //Always link to NBrightDNN
-            string providerAssembyClass = "NBrightDNN,NBrightDNN.DnnInterface";
+            //Always link to NBrightDNNv2
+            string providerAssembyClass = "NBrightDNNv2,NBrightDNNv2.DnnInterface";
             if (!string.IsNullOrEmpty(providerAssembyClass))
             {
                 var prov = providerAssembyClass.Split(Convert.ToChar(","));

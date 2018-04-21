@@ -9,9 +9,9 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml;
-using NBrightCore.common;
+using NBrightCorev2.common;
 
-namespace NBrightCore.render
+namespace NBrightCorev2.render
 {
     public class GenXmlTemplate : ITemplate
     {
@@ -1517,7 +1517,7 @@ namespace NBrightCore.render
         }
         /// <summary>
         /// This control is a asp hiddenfield, this allows a postback value to be returned to the server.
-        /// The normal "hidden" type control in NBrightCore is a HtmlGenericField, which does not allow for a postback, when data is set by JS or JQuery.
+        /// The normal "hidden" type control in NBrightCorev2 is a HtmlGenericField, which does not allow for a postback, when data is set by JS or JQuery.
         /// </summary>
         /// <param name="container"></param>
         /// <param name="xmlNod"></param>

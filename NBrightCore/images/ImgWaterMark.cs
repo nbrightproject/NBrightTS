@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace NBrightCore.images
+namespace NBrightCorev2.images
 {
     public class ImgWaterMark
     {

@@ -3,9 +3,9 @@ using System.Data;
 using System;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Framework.Providers;
-using NBrightDNN;
+using NBrightDNNv2;
 
-namespace NBrightDNN.SqlDataProvider
+namespace NBrightDNNv2.SqlDataProvider
 {
 
 	/// -----------------------------------------------------------------------------
@@ -25,7 +25,7 @@ namespace NBrightDNN.SqlDataProvider
 		{
 			if (provider == null)
 			{
-                const string assembly = "NBrightDNN.SqlDataprovider.SqlDataprovider,NBrightDNN";
+                const string assembly = "NBrightDNNv2.SqlDataprovider.SqlDataprovider,NBrightDNNv2";
 				Type objectType = Type.GetType(assembly, true, true);
 
 				provider = (DataProvider)Activator.CreateInstance(objectType);

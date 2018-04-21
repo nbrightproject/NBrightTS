@@ -4,7 +4,7 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Framework.Providers;
 using Microsoft.ApplicationBlocks.Data;
 
-namespace NBrightDNN.SqlDataProvider
+namespace NBrightDNNv2.SqlDataProvider
 {
 
 	/// -----------------------------------------------------------------------------

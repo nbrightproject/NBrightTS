@@ -30,13 +30,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
         Assemblies:
 
-        NBrightCore
-        NBrightDNN
+        NBrightCorev2
+        NBrightDNNv2
         RazorEngine
 
         NOTES:
 
-        GIT Branch:  https://nbrightdnn.codeplex.com/SourceControl/latest
+        GIT Branch:  https://NBrightDNNv2.codeplex.com/SourceControl/latest
 
       </releaseNotes>
 			<components>
@@ -61,7 +61,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 					<resourceFiles>
 						<basePath>DesktopModules\NBright\NBrightData</basePath>
 						<resourceFile>
-							<name>NBrightDNN_Resource.zip</name>
+							<name>NBrightDNNv2_Resource.zip</name>
 						</resourceFile>
 					</resourceFiles>
 				</component>
@@ -69,13 +69,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 					<assemblies>
 						<assembly>
 							<path>bin</path>
-							<name>NBrightCore.dll</name>
-							<sourceFileName>NBrightCore.dll</sourceFileName>
+							<name>NBrightCorev2.dll</name>
+							<sourceFileName>NBrightCorev2.dll</sourceFileName>
 						</assembly>
 						<assembly>
 							<path>bin</path>
-							<name>NBrightDNN.dll</name>
-							<sourceFileName>NBrightDNN.dll</sourceFileName>
+							<name>NBrightDNNv2.dll</name>
+							<sourceFileName>NBrightDNNv2.dll</sourceFileName>
 						</assembly>
 						<assembly>
 							<path>bin</path>

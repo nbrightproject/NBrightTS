@@ -8,12 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using DotNetNuke.Common;
-using NBrightCore.common;
-using NBrightCore.render;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
 
-namespace NBrightDNN.controls
+namespace NBrightDNNv2.controls
 {
-    public class BaseAdminPage : NBrightDNN.controls.BaseAdmin
+    public class BaseAdminPage : NBrightDNNv2.controls.BaseAdmin
     {
 
 

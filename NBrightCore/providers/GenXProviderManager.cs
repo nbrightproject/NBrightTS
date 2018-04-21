@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
-using NBrightCore.TemplateEngine;
+using NBrightCorev2.TemplateEngine;
 
-namespace NBrightCore.providers
+namespace NBrightCorev2.providers
 {
     public class GenXProviderManager
     {
@@ -84,7 +84,7 @@ namespace NBrightCore.providers
             try
             {
                 // Hardcode DNN extension provider 
-                var providerConfigXml = "<root><providers><genx>NBrightDNN,NBrightDNN.render.GenXmlTemplateExt</genx></providers></root>";
+                var providerConfigXml = "<root><providers><genx>NBrightDNNv2,NBrightDNNv2.render.GenXmlTemplateExt</genx></providers></root>";
                 try
                 {
                     var xmlDoc = new XmlDocument();

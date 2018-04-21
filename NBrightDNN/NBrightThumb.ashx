@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="NBrightThumb.ashx.cs" Class="NBrightDNN.NBrightThumb" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="NBrightThumb.ashx.cs" Class="NBrightDNNv2.NBrightThumb" %>

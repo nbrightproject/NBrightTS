@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NBrightDNN")]
+[assembly: AssemblyTitle("NBrightDNNv2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nevoweb")]
-[assembly: AssemblyProduct("NBrightDNN")]
+[assembly: AssemblyProduct("NBrightDNNv2")]
 [assembly: AssemblyCopyright("Copyright © Nevoweb 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

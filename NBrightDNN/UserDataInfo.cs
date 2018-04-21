@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using DotNetNuke.Common.Utilities;
-using NBrightCore.common;
-using NBrightCore.render;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
     public class UserDataInfo
     {
@@ -252,7 +252,7 @@ namespace NBrightDNN
         public void PurgeRecords(int purgeDays = -7)
         {
             //Remove unrequired USERDATAINFO
-            NBrightDNN.DnnUtils.PurgeDataBaseInfo(-1, -1, _objCtrl, "USERDATAINFO", purgeDays);
+            NBrightDNNv2.DnnUtils.PurgeDataBaseInfo(-1, -1, _objCtrl, "USERDATAINFO", purgeDays);
         }
 
         #endregion

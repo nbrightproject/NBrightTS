@@ -4,7 +4,7 @@ using System.Configuration.Provider;
 using System.Web.UI.WebControls;
 using System.Xml;
 
-namespace NBrightCore.providers
+namespace NBrightCorev2.providers
 {
     public abstract class CmsProvider : ProviderBase
     {

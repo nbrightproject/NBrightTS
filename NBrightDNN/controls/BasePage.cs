@@ -10,10 +10,10 @@ using System.Xml;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Common;
-using NBrightCore.common;
-using NBrightCore.render;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
 
-namespace NBrightDNN.controls
+namespace NBrightDNNv2.controls
 {
     /// <summary>
     /// This class is kept for backward compatiblity with the NBrightEspace and NBrightGen projects.
@@ -27,7 +27,7 @@ namespace NBrightDNN.controls
 
         protected const string EncrytionKey = "";
 
-        protected NBrightCore.controls.PagingCtrl CtrlPaging;
+        protected NBrightCorev2.controls.PagingCtrl CtrlPaging;
         protected Repeater CtrlSearch;
         protected Repeater CtrlList;
 		protected LiteralControl CtrlListMsg;
@@ -35,7 +35,7 @@ namespace NBrightDNN.controls
 
         protected UserDataInfo UInfo;
 
-        protected NBrightCore.TemplateEngine.TemplateGetter TemplCtrl;
+        protected NBrightCorev2.TemplateEngine.TemplateGetter TemplCtrl;
 
         private string _entityTypeCode;
 
@@ -81,7 +81,7 @@ namespace NBrightDNN.controls
         protected override void OnInit(EventArgs e)
         {
 			//// Debug code for cache improvement timing: REMOVE FOR BUILD
-			//NBrightLogTrace = NBrightCore.common.Utils.ReadFile(PortalSettings.HomeDirectoryMapPath + "\\NBrightLogTrace.txt");
+			//NBrightLogTrace = NBrightCorev2.common.Utils.ReadFile(PortalSettings.HomeDirectoryMapPath + "\\NBrightLogTrace.txt");
 			//NBrightLogStartTick = DateTime.Now.Ticks;
 			//// Debug code for cache improvement timing: REMOVE FOR BUILD
 
@@ -127,7 +127,7 @@ namespace NBrightDNN.controls
 
             if (!DisablePaging)
             {
-                CtrlPaging = new NBrightCore.controls.PagingCtrl();
+                CtrlPaging = new NBrightCorev2.controls.PagingCtrl();
                 this.Controls.Add(CtrlPaging);
 
                 CtrlList.ItemCommand += new RepeaterCommandEventHandler(CtrlListItemCommand);
@@ -139,7 +139,7 @@ namespace NBrightDNN.controls
             if (String.IsNullOrEmpty(PrimaryTemplateMapPath)) PrimaryTemplateMapPath = PortalSettings.HomeDirectoryMapPath;
             if (String.IsNullOrEmpty(SecondaryTemplateMapPath)) SecondaryTemplateMapPath = MapPath(ControlAdminPath);
             if (String.IsNullOrEmpty(TemplateThemeFolder)) TemplateThemeFolder = ""; // we need a valid value, even if empty
-            TemplCtrl = new NBrightCore.TemplateEngine.TemplateGetter(PrimaryTemplateMapPath, SecondaryTemplateMapPath, "NBrightTemplates", TemplateThemeFolder);
+            TemplCtrl = new NBrightCorev2.TemplateEngine.TemplateGetter(PrimaryTemplateMapPath, SecondaryTemplateMapPath, "NBrightTemplates", TemplateThemeFolder);
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -160,7 +160,7 @@ namespace NBrightDNN.controls
 			//NBrightLogEndTick = DateTime.Now.Ticks;
 			//NBrightLogElapsedTick = NBrightLogEndTick - NBrightLogStartTick;
 			//NBrightLogTrace += NBrightLogElapsedTick.ToString() + " - Total Ticks " + base.ModuleId.ToString("") + "\r\n"; ;
-			//NBrightCore.common.Utils.SaveFile(PortalSettings.HomeDirectoryMapPath + "\\NBrightLogTrace.txt", NBrightLogTrace);
+			//NBrightCorev2.common.Utils.SaveFile(PortalSettings.HomeDirectoryMapPath + "\\NBrightLogTrace.txt", NBrightLogTrace);
 			//// Debug code for cache improvement timing: REMOVE FOR BUILD
 
             base.OnLoad(e);

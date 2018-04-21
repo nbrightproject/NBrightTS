@@ -12,12 +12,12 @@ using DotNetNuke.Common;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Services.Localization;
-using NBrightCore.common;
-using NBrightCore.providers;
+using NBrightCorev2.common;
+using NBrightCorev2.providers;
 using RazorEngine.Templating;
 using RazorEngine.Text;
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
     public class RazorEngineTokens<T> : TemplateBase<T>
     {

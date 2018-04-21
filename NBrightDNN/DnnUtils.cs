@@ -14,10 +14,10 @@ using DotNetNuke.Security;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.FileSystem;
 using ICSharpCode.SharpZipLib.Zip;
-using NBrightCore.common;
+using NBrightCorev2.common;
 using FileInfo = System.IO.FileInfo;
 
-namespace NBrightDNN
+namespace NBrightDNNv2
 {
     public class DnnUtils
     {
@@ -339,12 +339,12 @@ namespace NBrightDNN
 
         public static DotNetNuke.Entities.Tabs.TabCollection GetPortalTabs(int portalId)
         {
-            var portalTabs = (DotNetNuke.Entities.Tabs.TabCollection)NBrightCore.common.Utils.GetCache("NBright_portalTabs" + portalId.ToString(""));
+            var portalTabs = (DotNetNuke.Entities.Tabs.TabCollection)NBrightCorev2.common.Utils.GetCache("NBright_portalTabs" + portalId.ToString(""));
             if (portalTabs == null)
             {
                 var objTabCtrl = new DotNetNuke.Entities.Tabs.TabController();
                 portalTabs = objTabCtrl.GetTabsByPortal(portalId);
-                NBrightCore.common.Utils.SetCache("NBright_portalTabs" + portalId.ToString(""), portalTabs);
+                NBrightCorev2.common.Utils.SetCache("NBright_portalTabs" + portalId.ToString(""), portalTabs);
             }
             return portalTabs;
         }
@@ -447,7 +447,7 @@ namespace NBrightDNN
             // This function is to get around medium trust not allowing createfolder in .Net 2.0. 
             // DNN seems to have some work around (Not followed up on what exactly, probably security allowed in shared hosting environments for DNN except???).
             // But this leads me to have this rather nasty call to DNN FolderManager.
-            // Prefered method is to us the Utils.CreateFolder function in NBrightCore.
+            // Prefered method is to us the Utils.CreateFolder function in NBrightCorev2.
 
             var blnCreated = false;
             //try normal test (doesn;t work on medium trust, but stops us forcing a "AddFolder" and suppressing the error.)

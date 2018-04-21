@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
-using NBrightCore.common;
-using NBrightCore.render;
+using NBrightCorev2.common;
+using NBrightCorev2.render;
 
-namespace NBrightDNN.controls
+namespace NBrightDNNv2.controls
 {
-    public class BaseAdmin : NBrightDNN.controls.BasePage
+    public class BaseAdmin : NBrightDNNv2.controls.BasePage
     {
         protected Repeater CtrlBanner;
 
@@ -33,11 +33,11 @@ namespace NBrightDNN.controls
                 char[] charsToTrim = {'/', '\\', '.', ' '};
                 if (System.IO.File.Exists(MapPath(ControlAdminIncludePath + "ui/admin.css")))
                 {
-                    NBrightCore.common.PageIncludes.IncludeCssFile(Page, "GenCSSadmin.css", ControlAdminIncludePath.TrimEnd(charsToTrim) + "/ui/admin.css");
+                    NBrightCorev2.common.PageIncludes.IncludeCssFile(Page, "GenCSSadmin.css", ControlAdminIncludePath.TrimEnd(charsToTrim) + "/ui/admin.css");
                 }
                 if (System.IO.File.Exists(MapPath(ControlAdminIncludePath + "ui/admin.js")))
                 {
-                    NBrightCore.common.PageIncludes.IncludeJsFile(Page, "GenCSSadmin.js", ControlAdminIncludePath.TrimEnd(charsToTrim) + "/ui/admin.js");
+                    NBrightCorev2.common.PageIncludes.IncludeJsFile(Page, "GenCSSadmin.js", ControlAdminIncludePath.TrimEnd(charsToTrim) + "/ui/admin.js");
                 }
 
                 // *** Menu ***

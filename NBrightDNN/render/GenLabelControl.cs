@@ -2,10 +2,10 @@
 using System.Web.UI;
 using System.Xml;
 using DotNetNuke.Services.Localization;
-using NBrightCore.render;
+using NBrightCorev2.render;
 
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
     [ToolboxData("<{0}:GenLabelControl runat=server></{0}:GenLabelControl>")]
     public sealed class GenLabelControl : UserControl

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Common;
 using DotNetNuke.UI.WebControls;
 
-namespace NBrightDNN.render
+namespace NBrightDNNv2.render
 {
     public class GenDateControl : DateEditControl 
     {
