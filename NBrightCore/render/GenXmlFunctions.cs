@@ -2131,6 +2131,15 @@ namespace NBrightCore.render
 
         public static string GetGenXmlValue(string dataXml, string xPath)
         {
+            return GetGenXmlValueFormat(dataXml, xPath, Utils.GetCurrentCulture());
+        }
+
+        public static string GetGenXmlValueFormat(string dataXml, string xPath, string lang)
+        {
+            if (String.IsNullOrEmpty(lang))
+            {
+                lang = Utils.GetCurrentCulture();
+            }
             var xmlNod = GetGenXmLnode(dataXml, xPath);
             if (xmlNod == null)
             {
@@ -2141,9 +2150,9 @@ namespace NBrightCore.render
                 switch (xmlNod.Attributes["datatype"].InnerText.ToLower())
                 {
                     case "double":
-                        return Utils.FormatToDisplay(xmlNod.InnerText,Utils.GetCurrentCulture(),TypeCode.Double,"N");
+                        return Utils.FormatToDisplay(xmlNod.InnerText, lang, TypeCode.Double, "N");
                     case "date":
-                        return Utils.FormatToDisplay(xmlNod.InnerText, Utils.GetCurrentCulture(), TypeCode.DateTime,"d");
+                        return Utils.FormatToDisplay(xmlNod.InnerText, lang, TypeCode.DateTime, "d");
                     case "html":
                         return xmlNod.InnerXml;
                     default:
@@ -2151,14 +2160,15 @@ namespace NBrightCore.render
                         if (strOut.Contains("<![CDATA["))
                         {
                             //convert back cdata marks con verted so it saves OK into XML 
-                            strOut = strOut.Replace("**CDATASTART**","<![CDATA[");
-                            strOut = strOut.Replace("**CDATAEND**","]]>");
+                            strOut = strOut.Replace("**CDATASTART**", "<![CDATA[");
+                            strOut = strOut.Replace("**CDATAEND**", "]]>");
                         }
                         return strOut;
                 }
             }
             return xmlNod.InnerText;
         }
+
 
         /// <summary>
         /// get the data fromthe XML wothout reformatting for numbers or dates.

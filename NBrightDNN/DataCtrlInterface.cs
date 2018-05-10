@@ -329,7 +329,7 @@ namespace NBrightDNN
             {
                 try
                 {
-                    return GenXmlFunctions.GetGenXmlValue(XMLData, xpath);
+                    return GenXmlFunctions.GetGenXmlValueFormat(XMLData, xpath, Lang);
                 }
                 catch (Exception ex)
                 {
