@@ -193,13 +193,7 @@ namespace NBrightDNN.render
         [Obsolete("RichTextBox is deprecated (can cause race condition), please use CkEditor instead.")]
         public IEncodedString RichTextBox(NBrightInfo info, String xpath, String attributes = "")
         {
-            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
-
-            var upd = getUpdateAttr(xpath, attributes);
-            var id = getIdFromXpath(xpath);
-            var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
-            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); $('#savedata').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);}); $('.selecteditlanguage').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.fileclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});  $('.imageclick').click(function () { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value);});   });</script>";
-            return new RawString(strOut);
+            return CkEditor(info,xpath,attributes);
         }
 
         /// <summary>
@@ -210,25 +204,44 @@ namespace NBrightDNN.render
         /// <param name="xpath"></param>
         /// <param name="attributes"></param>
         /// <returns></returns>
-        public IEncodedString CkEditor(NBrightInfo info, String xpath, String attributes = "")
+        public IEncodedString CkEditor(NBrightInfo info, String xpath, String attributes, String startupfile)
         {
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
 
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
             var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
-            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } ); editorvar" + id + ".on('change', function (event) { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value); }); });</script>";
+            strOut += GetCKEditorStartup(id, startupfile);
+            return new RawString(strOut);
+        }
+        public IEncodedString CkEditor(NBrightInfo info, String xpath, String attributes = "")
+        {
+            return CkEditor(info, xpath, attributes, "startup.js");
+        }
+
+        public IEncodedString CkEditorFull(NBrightInfo info, String xpath, String attributes, String startupfile)
+        {
+            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+
+            var upd = getUpdateAttr(xpath, attributes);
+            var id = getIdFromXpath(xpath);
+            var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
+            strOut += GetCKEditorStartup(id, startupfile);
             return new RawString(strOut);
         }
         public IEncodedString CkEditorFull(NBrightInfo info, String xpath, String attributes = "")
         {
-            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+            return CkEditor(info, xpath, attributes,"startupfull.js");
+        }
 
-            var upd = getUpdateAttr(xpath, attributes);
-            var id = getIdFromXpath(xpath);
-            var strOut = " <textarea id='" + id + "' datatype='html' type='text' name='editor" + id + "' " + attributes + " " + upd + " >" + info.GetXmlProperty(xpath) + "</textarea>";
-            strOut += "<script> var editorvar" + id + " = '';  $(document).ready(function () { editorvar" + id + " = CKEDITOR.replace('editor" + id + "', { customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/none.js' } ); editorvar" + id + ".on('change', function (event) { var value = editorvar" + id + ".getData(); $('#" + id + "').val(value); }); });</script>";
-            return new RawString(strOut);
+        private string GetCKEditorStartup(string id,string filename)
+        {
+            var strOut = "<script>";
+            var filepath = HttpContext.Current.Server.MapPath("/DesktopModules/NBright/NBrightData/ckeditor/" + filename);
+            strOut += Utils.ReadFile(filepath);
+            strOut = strOut.Replace("{id}", id);
+            strOut += "</script>";
+            return strOut;
         }
 
         public IEncodedString CheckBox(NBrightInfo info, String xpath,String text, String attributes = "", Boolean defaultValue = false)
