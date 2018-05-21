@@ -36,18 +36,18 @@
   <ItemGroup>
     <Reference Include="DotNetNuke, Version=8.0.1.236, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\bin\DotNetNuke.dll</HintPath>
+      <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\refs\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.7.7.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refs\RazorEngine.dll</HintPath>
+      <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="SharpZipLib, Version=0.81.0.1407, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refs\SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\bin\SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -119,16 +119,16 @@
     <Content Include="Skins\NBrightModAdmin\skin.doctype.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NBrightCore\NBrightCore.csproj">
+    <ProjectReference Include="NBrightCore\NBrightCore.csproj">
       <Project>{7b338113-6a9a-484d-a6c6-4d63fd5e58c6}</Project>
       <Name>NBrightCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetFileName)" "..\..\..\..\..\..\..\bin\$(TargetFileName)"
+    <PostBuildEvent>copy "$(TargetFileName)" "..\..\..\..\..\bin\$(TargetFileName)"
 
-copy "$(AssemblyName).pdb" "..\..\..\..\..\..\..\\bin\$(AssemblyName).pdb"
+copy "$(AssemblyName).pdb" "..\..\..\..\..\\bin\$(AssemblyName).pdb"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,3 +3,5 @@ NBrightDNN/obj/
 packages/
 NBrightDNN/Installation/NBrightDNN_Resource.zip
 .vs/
+obj/
+ckeditor/plugins/ckeditor-docs-samples-master/

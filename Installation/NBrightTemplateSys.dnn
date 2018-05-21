@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="NBrightTemplateSys" type="Module" version="8.4.0">
+		<package name="NBrightTemplateSys" type="Module" version="8.5.0">
 			<friendlyName>NBrightTemplateSys</friendlyName>
 			<description>NBrightTemplateSys is the core support module for projects using the NBright Template System.  It only installs core dlls required by other projects. DNN8+ ONLY</description>
 			<iconFile />

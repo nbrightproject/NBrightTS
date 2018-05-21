@@ -550,7 +550,7 @@ namespace NBrightDNN.render
             {
                 return true;
             }
-            var objUser = UserController.GetCurrentUserInfo();
+            var objUser = UserController.Instance.GetCurrentUserInfo();
             return objUser.IsInRole(genprop);
         }
 
@@ -561,7 +561,7 @@ namespace NBrightDNN.render
             {
                 return true;
             }
-            var objUser = UserController.GetCurrentUserInfo();
+            var objUser = UserController.Instance.GetCurrentUserInfo();
             return objUser.IsInRole(genprop);
         }
 

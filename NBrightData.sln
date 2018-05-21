@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightCore", "NBrightCore\NBrightCore.csproj", "{7B338113-6A9A-484D-A6C6-4D63FD5E58C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightDNN", "NBrightDNN\NBrightDNN.csproj", "{EC815D38-62CF-4B46-8177-CF40CE1AAB62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightDNN", "NBrightDNN.csproj", "{EC815D38-62CF-4B46-8177-CF40CE1AAB62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B44E7229-4F09-4748-A3A4-BFF4427218FB}
 	EndGlobalSection
 EndGlobal
