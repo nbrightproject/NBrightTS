@@ -4,9 +4,12 @@
 
  $(document).ready(function () {
 
- CKEDITOR.plugins.addExternal( 'simplebox', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/simplebox/', 'plugin.js' );
+     CKEDITOR.plugins.addExternal('simplebox', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/simplebox/', 'plugin.js' );
 
- editorvar{id} = CKEDITOR.replace('editor{id}', { extraPlugins: 'simplebox', customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js' } );
+     editorvar{id} = CKEDITOR.replace('editor{id}', {
+         extraPlugins: 'simplebox',
+         customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js'
+     });
 
  editorvar{id}.on('change', function (event) {  
 	var value = editorvar{id}.getData();

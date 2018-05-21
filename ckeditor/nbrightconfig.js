@@ -13,7 +13,7 @@ config.toolbar_NBrightMod =
 	{ name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
 	{ name: 'basicstyles', items : [ 'Bold','Italic','Strike' ] },
 	{ name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'HorizontalRule', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
-	{ name: 'links', items : [ 'Link','Unlink','Simplebox','Anchor' ] },
+    { name: 'links', items: ['Link', 'Unlink','Simplebox','Anchor' ] },
 	{ name: 'styles', items : [ 'Format' ] },
 ];
 

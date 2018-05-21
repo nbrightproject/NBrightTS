@@ -55,7 +55,7 @@ CKEDITOR.plugins.add( 'simplebox', {
 			// The template will be used when creating new instances of the Simple Box widget.
 			template:
 				'<div class="simplebox">' +
-					'<h2 class="simplebox-title">Title</h2>' +
+					'<h2 class="simplebox-title">TitleZZZZZZZZZ</h2>' +
 					'<div class="simplebox-content"><p>Content...</p></div>' +
 				'</div>',
 

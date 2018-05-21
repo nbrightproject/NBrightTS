@@ -48,7 +48,48 @@ CKEDITOR.dialog.add( 'simplebox', function( editor ) {
 						commit: function( widget ) {
 							widget.setData( 'width', this.getValue() );
 						}
-					}
+					},
+					{
+                        id: 'width2',
+                        type: 'text',
+                        label: 'Width2',
+                        width: '150px',
+                        setup: function (widget) {
+                            this.setValue(widget.data.width);
+                        },
+                        commit: function (widget) {
+                            widget.setData('width', this.getValue());
+                        }
+                    },
+                    {
+                        type: 'select',
+                        id: 'exam_ID',
+                        label: 'Select Exam',
+                        items: [['--- Select an Exam---', 0]],
+                        setup: function (element) {
+                            var element_id = '#' + this.getInputElement().$.id;
+                            $.ajax({
+                                type: 'POST',
+                                url: '/DesktopModules/NBright/NBrightData/ApiConnector.ashx?cmd=test',
+                                data: '{"cpID":' + window.parent.$("#cpID").val() + '}',
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: false,
+                                success: function (data) {
+                                    alert('data: ' + data);
+                                    $.each(data.DATA, function (index, item) {
+                                        $(element_id).get(0).options[$(element_id).get(0).options.length] = new Option(item[1], item[0]);
+                                    });
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status);
+                                    alert(thrownError);
+                                }
+                            });
+                        }
+
+                    }
+
 				]
 			}
 		]
