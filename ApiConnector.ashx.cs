@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using System.Linq;
+using DotNetNuke.Common;
 
 namespace NBrightDNN
 {
@@ -51,9 +52,19 @@ namespace NBrightDNN
                     strOutXml = "<root>" + UserController.Instance.GetCurrentUserInfo().Username + "</root>";
                     break;
                 case "dnnpages":
-                    strOutXml = "<pages><page url='/test/page1'>TEST1</page><page url='/test/page2'>TEST2</page><page url='/test/page3'>TEST3</page></pages>";
-                    //strOutXml = "[{\"FriendID\":1,\"FriendMobile\":\"999999786\",\"FriendName\":\"Shree Sai\",\"FriendPlace\":\"Shirdi\"}]";
-                    //strJson = "[[29,\"mike\"],[5,\"dummy\"]]";
+                    strOutXml = "<pages>";
+                    var tList = DnnUtils.GetTreeTabListOnTabId();
+                    foreach (var tItem in tList)
+                    {
+                        var tabid = tItem.Key;
+                        if (Utils.IsNumeric(tabid))
+                        {
+                            var taburl = Globals.NavigateURL(Convert.ToInt32(tabid));
+                            strOutXml += " <page url='" + taburl + "'>" + tItem.Value + "</page>";
+                        }
+                    }
+                    strOutXml += "</pages>";
+
                     break;
             }
 
@@ -71,20 +82,6 @@ namespace NBrightDNN
 
         }
 
-
-        private string XmlToJson(string xmlString)
-        {
-            return new JavaScriptSerializer().Serialize(GetXmlValues(XElement.Parse(xmlString)));
-        }
-
-        private Dictionary<string, object> GetXmlValues(XElement xml)
-        {
-            var attr = xml.Attributes().ToDictionary(d => d.Name.LocalName, d => (object)d.Value);
-            if (xml.HasElements) attr.Add("_value", xml.Elements().Select(e => GetXmlValues(e)));
-            else if (!xml.IsEmpty) attr.Add("_value", xml.Value);
-
-            return new Dictionary<string, object> { { xml.Name.LocalName, attr } };
-        }
 
     }
 }

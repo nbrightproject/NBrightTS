@@ -8,7 +8,7 @@
 // (i.e. the widgetDef.dialog property is set).
 // When you are opening the dialog window by yourself, you need to take care of this by yourself too.
 
-CKEDITOR.dialog.add( 'simplebox', function( editor ) {
+CKEDITOR.dialog.add( 'dnnpagelinks', function( editor ) {
 	return {
 		title: 'Edit Simple Box',
 		minWidth: 200,
@@ -18,47 +18,15 @@ CKEDITOR.dialog.add( 'simplebox', function( editor ) {
 				id: 'info',
 				elements: [
 					{
-						id: 'align',
-						type: 'select',
-						label: 'Align',
-						items: [
-							[ editor.lang.common.notSet, '' ],
-							[ editor.lang.common.alignLeft, 'left' ],
-							[ editor.lang.common.alignRight, 'right' ],
-							[ editor.lang.common.alignCenter, 'center' ]
-						],
-						// When setting up this field, set its value to the "align" value from widget data.
-						// Note: Align values used in the widget need to be the same as those defined in the "items" array above.
-						setup: function( widget ) {
-							this.setValue( widget.data.align );
-						},
-						// When committing (saving) this field, set its value to the widget data.
-						commit: function( widget ) {
-							widget.setData( 'align', this.getValue() );
-						}
-					},
-					{
-						id: 'width',
-						type: 'text',
-						label: 'Width',
-						width: '50px',
-						setup: function( widget ) {
-							this.setValue( widget.data.width );
-						},
-						commit: function( widget ) {
-							widget.setData( 'width', this.getValue() );
-						}
-					},
-					{
-                        id: 'width2',
+                        id: 'linkname',
                         type: 'text',
-                        label: 'Width2',
+                        label: '',
                         width: '150px',
                         setup: function (widget) {
                             this.setValue(widget.data.width);
                         },
                         commit: function (widget) {
-                            widget.setData('width', this.getValue());
+                            widget.setData('linkname', this.getValue());
                         }
                     },
                     {
@@ -88,11 +56,14 @@ CKEDITOR.dialog.add( 'simplebox', function( editor ) {
                                         xmlDoc.loadXML(data);
                                     }
 
-                                    var list = xmlDoc.getElementsByTagName("page");
-                                    for (var i = 0; i < list.length; i++) {
-                                        //alert(list[i].getAttribute("url"));
-                                        $(element_id).get(0).options[$(element_id).get(0).options.length] = new Option(list[i].firstChild.nodeValue, list[i].getAttribute("url"));
+                                    if ($(element_id).get(0).options.length == 0) {
+                                        var list = xmlDoc.getElementsByTagName("page");
+                                        for (var i = 0; i < list.length; i++) {
+                                            //alert(list[i].getAttribute("url"));
+                                            $(element_id).get(0).options[$(element_id).get(0).options.length] = new Option(list[i].firstChild.nodeValue, list[i].getAttribute("url"));
+                                        }
                                     }
+
 
                                 },
                                 error: function (xhr, ajaxOptions, thrownError) {
@@ -106,6 +77,12 @@ CKEDITOR.dialog.add( 'simplebox', function( editor ) {
 
 				]
 			}
-		]
+        ],
+        onOk: function () {
+            var dialog = this;
+            var linkname = dialog.getValueOf('info','linkname');
+            var dnnpage = dialog.getValueOf('info', 'dnnpage');
+            editor.insertHtml('<a href="' + dnnpage + '">' + linkname + '</a>');
+        }
 	};
 } );

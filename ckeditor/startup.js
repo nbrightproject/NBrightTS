@@ -4,10 +4,10 @@
 
  $(document).ready(function () {
 
-     CKEDITOR.plugins.addExternal('simplebox', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/simplebox/', 'plugin.js' );
+     CKEDITOR.plugins.addExternal('dnnpagelinks', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/dnnpagelinks/', 'plugin.js' );
 
      editorvar{id} = CKEDITOR.replace('editor{id}', {
-         extraPlugins: 'simplebox',
+         extraPlugins: 'dnnpagelinks',
          customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js'
      });
 
