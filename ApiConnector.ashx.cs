@@ -30,6 +30,7 @@ namespace NBrightDNN
             #region "Initialize"
 
             var strOutXml = "";
+            var strJson = "";
 
             var paramCmd = Utils.RequestQueryStringParam(context, "cmd");
             var lang = Utils.RequestQueryStringParam(context, "lang");
@@ -44,25 +45,26 @@ namespace NBrightDNN
 
             #region "Do processing of command"
 
-            strOutXml = "<root>** No Action **</root>";
             switch (paramCmd)
             {
                 case "test":
                     strOutXml = "<root>" + UserController.Instance.GetCurrentUserInfo().Username + "</root>";
                     break;
+                case "dnnpages":
+                    strOutXml = "<pages><page url='/test/page1'>TEST1</page><page url='/test/page2'>TEST2</page><page url='/test/page3'>TEST3</page></pages>";
+                    //strOutXml = "[{\"FriendID\":1,\"FriendMobile\":\"999999786\",\"FriendName\":\"Shree Sai\",\"FriendPlace\":\"Shirdi\"}]";
+                    //strJson = "[[29,\"mike\"],[5,\"dummy\"]]";
+                    break;
             }
 
-
-            var jsonText = XmlToJson(strOutXml);
-
-        #endregion
+            #endregion
 
             #region "return results"
 
             //send back xml as plain text
             context.Response.Clear();
             context.Response.ContentType = "text/plain";
-            context.Response.Write(jsonText);
+            context.Response.Write(strOutXml);
             context.Response.End();
 
             #endregion
