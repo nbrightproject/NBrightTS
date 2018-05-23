@@ -61,7 +61,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 					<resourceFiles>
 						<basePath>DesktopModules\NBright\NBrightData</basePath>
 						<resourceFile>
-							<name>NBrightDNN_Resource.zip</name>
+							<name>Resource.zip</name>
 						</resourceFile>
 					</resourceFiles>
 				</component>
