@@ -42,9 +42,8 @@
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.7.7.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\NBrightMod\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    <Reference Include="RazorEngine">
+      <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="SharpZipLib, Version=0.81.0.1407, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
@@ -56,9 +55,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\NBrightMod\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -111,26 +110,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
-    <None Include="ckeditor\plugins\pagelinks\LICENSE.md" />
-    <None Include="ckeditor\plugins\simplebox\LICENSE.md" />
+    <None Include="ckeditor\plugins\dnnpagelinks\LICENSE.md" />
     <None Include="Installation\03.02.00.SqlDataProvider" />
     <None Include="Installation\03.04.00.SqlDataProvider" />
     <None Include="NBrightDNN.dnn" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="NBrightThumb.ashx" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ckeditor\nbrightconfig.js" />
-    <Content Include="ckeditor\plugins\pagelinks\dialogs\anchor.js" />
-    <Content Include="ckeditor\plugins\pagelinks\dialogs\link.js" />
-    <Content Include="ckeditor\plugins\pagelinks\icons\pagelinks.png" />
-    <Content Include="ckeditor\plugins\pagelinks\plugin.js" />
-    <Content Include="ckeditor\plugins\simplebox\dialogs\simplebox.js" />
-    <Content Include="ckeditor\plugins\simplebox\icons\simplebox.png" />
-    <Content Include="ckeditor\plugins\simplebox\plugin.js" />
-    <Content Include="ckeditor\plugins\simplebox\samples\contents.css" />
-    <Content Include="ckeditor\plugins\simplebox\samples\simplebox.html" />
+    <Content Include="ckeditor\plugins\dnnpagelinks\dialogs\dnnpagelinks.js" />
+    <Content Include="ckeditor\plugins\dnnpagelinks\icons\dnnpagelinks.png" />
+    <Content Include="ckeditor\plugins\dnnpagelinks\plugin.js" />
+    <Content Include="ckeditor\plugins\dnnpagelinks\samples\contents.css" />
+    <Content Include="ckeditor\plugins\dnnpagelinks\samples\simplebox.html" />
     <Content Include="ckeditor\startup.js" />
     <Content Include="ckeditor\startupfull.js" />
     <Content Include="css\ui.fancytree.min.css" />

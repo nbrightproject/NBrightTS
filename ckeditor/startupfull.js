@@ -4,9 +4,7 @@
 
  $(document).ready(function () {
 
- CKEDITOR.plugins.addExternal( 'simplebox', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/simplebox/', 'plugin.js' );
-
-editorvar{id} = CKEDITOR.replace('editor{id}', { extraPlugins: 'simplebox' } );
+editorvar{id} = CKEDITOR.replace('editor{id}', { } );
 
  editorvar{id}.on('change', function (event) {  
 	var value = editorvar{id}.getData();

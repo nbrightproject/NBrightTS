@@ -7,7 +7,6 @@
      CKEDITOR.plugins.addExternal('dnnpagelinks', '/DesktopModules/NBright/NBrightData/ckeditor/plugins/dnnpagelinks/', 'plugin.js' );
 
      editorvar{id} = CKEDITOR.replace('editor{id}', {
-         extraPlugins: 'dnnpagelinks',
          customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js'
      });
 

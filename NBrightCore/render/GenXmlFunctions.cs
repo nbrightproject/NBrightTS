@@ -1462,6 +1462,11 @@ namespace NBrightCore.render
             {
                 xmlDoc1.LoadXml(xmlAjaxData);
 
+                if (editLang == "")
+                {
+                    editLang = xmlDoc1.SelectSingleNode("root/f[@id='editlang']")?.InnerText;
+                }
+
                 //load original XML for update  
                 var xmlDoc = new XmlDocument();
                 if (!String.IsNullOrEmpty(originalXml))

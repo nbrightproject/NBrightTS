@@ -205,9 +205,10 @@ namespace NBrightCore.common
                     }
                     return "0";
                 case TypeCode.DateTime:
-                    if (IsDate(inpData))
+                    if (IsDate(inpData, editlang))
                     {
-                        var dte = Convert.ToDateTime(inpData);
+                        var cultureInfo = new CultureInfo(editlang, true);
+                        var dte = Convert.ToDateTime(inpData, cultureInfo);
                         return dte.ToString("s");
                     }
                     return "";
