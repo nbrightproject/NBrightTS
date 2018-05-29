@@ -1465,6 +1465,7 @@ namespace NBrightCore.render
                 if (editLang == "")
                 {
                     editLang = xmlDoc1.SelectSingleNode("root/f[@id='editlang']")?.InnerText;
+                    if (editLang == null) editLang = "";
                 }
 
                 //load original XML for update  

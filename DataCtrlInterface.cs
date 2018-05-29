@@ -604,6 +604,7 @@ namespace NBrightDNN
 
         #region "Xref"
 
+        [Obsolete("Use SetXmlProperty")]
         public void AddXref(string nodeName, string value)
         {
             //create node if not there.
@@ -615,6 +616,7 @@ namespace NBrightDNN
                     "genxml/" + nodeName + "/id", "genxml/" + nodeName);
         }
 
+        [Obsolete("Use RemoveXMLNode")]
         public void RemoveXref(string nodeName, string value)
         {
             //Removexref node, if there.
@@ -623,6 +625,7 @@ namespace NBrightDNN
         }
 
 
+        [Obsolete("Use GetXmlProperty")]
         public List<String> GetXrefList(string nodeName)
         {
             var strList = new List<String>();
@@ -636,7 +639,7 @@ namespace NBrightDNN
 
         public void ValidateXmlFormat()
         {
-            if (XMLDoc == null) XMLData = GenXmlFunctions.GetGenXml(new RepeaterItem(0, ListItemType.Item)); // if we don;t have anything, create an empty default to stop errors.
+            if (XMLDoc == null) XMLData = "<genxml></genxml>"; // if we don;t have anything, create an empty default to stop errors.
 
             if (XMLDoc.SelectSingleNode("genxml/hidden") == null) SetXmlProperty("genxml/hidden", "");
             if (XMLDoc.SelectSingleNode("genxml/textbox") == null) SetXmlProperty("genxml/textbox", "");
