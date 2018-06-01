@@ -96,14 +96,14 @@ namespace NBrightDNN.render
             return new RawString(strOut);
         }
 
-        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "", String defaultValue = "")
+        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "", String defaultValue = "", bool encrypted = false)
         {
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
             if (defaultValue.StartsWith("ResourceKey:")) defaultValue = ResourceKey(defaultValue.Replace("ResourceKey:", "")).ToString();
 
-            var upd = getUpdateAttr(xpath, attributes);
+            var upd = getUpdateAttr(xpath, attributes, encrypted);
             var id = getIdFromXpath(xpath);
-            var value = info.GetXmlProperty(xpath);
+            var value = encrypted ? NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), info.GetXmlProperty(xpath)) : info.GetXmlProperty(xpath);
             if (value == "") value = defaultValue;
 
             var typeattr = "type='text'";
@@ -747,10 +747,15 @@ namespace NBrightDNN.render
             return rtnid;
         }
 
-        public String getUpdateAttr(String xpath,String attributes)
+        public String getUpdateAttr(String xpath, String attributes)
+        {
+            return getUpdateAttr(xpath, attributes, false);
+        }
+
+        public String getUpdateAttr(String xpath, String attributes, bool encrypted)
         {
             if (xpath == "") return "";
-            var upd = "update='save'";
+            var upd = encrypted ? "update='save_encrypted'" : "update='save'";
             if (xpath.StartsWith("genxml/lang/")) upd = "update='lang'";
             if (attributes.Contains("update=")) upd = "";
             return upd;

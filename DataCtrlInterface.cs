@@ -65,7 +65,7 @@ namespace NBrightDNN
         /// <summary>
         /// Create new NBrightInfo class for generic XML data in NBright
         /// </summary>
-        /// <param name="populate">Craete the basiuc XML strucutre</param>
+        /// <param name="populate">Create the basic XML structure</param>
         public NBrightInfo(Boolean populate)
         {
             if (populate)
@@ -325,11 +325,17 @@ namespace NBrightDNN
 
         public string GetXmlProperty(string xpath)
         {
+            return GetXmlProperty(xpath, false);
+        }
+
+        public string GetXmlProperty(string xpath, bool encrypted)
+        {
             if (!string.IsNullOrEmpty(XMLData))
             {
                 try
                 {
-                    return GenXmlFunctions.GetGenXmlValueFormat(XMLData, xpath, Lang);
+                    var output = GenXmlFunctions.GetGenXmlValueFormat(XMLData, xpath, Lang);
+                    return encrypted ? NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), output) : output;
                 }
                 catch (Exception ex)
                 {
@@ -550,6 +556,8 @@ namespace NBrightDNN
         {
             ValidateXmlFormat(); // make sure we have correct structure so update works.
             var updateType = updateTypePrefix + "save";
+            var updateTypeEncrypted = updateType + "_encrypted";
+
             if (!String.IsNullOrEmpty(Lang)) updateType = updateTypePrefix + "lang";
             var ajaxInfo = new NBrightInfo();
             var xmlData = GenXmlFunctions.GetGenXmlByAjax(ajaxStrData, "", "genxml", ignoresecurityfilter, filterlinks);
@@ -576,10 +584,17 @@ namespace NBrightDNN
                                 }
                                 else
                                 {
-                                    if (nod.Attributes["update"].InnerText.ToLower() == updateType)
+                                    if (nod.Attributes["update"].InnerText.ToLower() == updateType || nod.Attributes["update"].InnerText.ToLower() == updateTypeEncrypted)
                                     {
                                         var xpath = "genxml/" + nod1.Name.ToLower() + "/" + nod.Name.ToLower();
-                                        SetXmlProperty(xpath, nod.InnerText);
+
+                                        if (nod.Attributes["update"].InnerText.ToLower() == updateTypeEncrypted) {
+                                            SetXmlProperty(xpath, NBrightCore.common.Security.Encrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), nod.InnerText));
+                                        }
+                                        else {
+                                            SetXmlProperty(xpath, nod.InnerText);
+                                        }
+
                                         if (nod1.Name.ToLower() == "dropdownlist" && nod.Attributes["selectedtext"] != null)
                                         {
                                             SetXmlProperty(xpath + "/@selectedtext", nod.Attributes["selectedtext"].InnerText);
