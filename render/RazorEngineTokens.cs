@@ -96,6 +96,16 @@ namespace NBrightDNN.render
             return new RawString(strOut);
         }
 
+        public IEncodedString TextBox(NBrightInfo info, String xpath)
+        {
+            return TextBox(info, xpath, "", "", false);
+        }
+
+        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "")
+        {
+            return TextBox(info, xpath, attributes = "", "", false);
+        }
+
         public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "", String defaultValue = "")
         {
             return TextBox(info, xpath, attributes = "", defaultValue = "", false);
