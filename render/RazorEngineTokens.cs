@@ -101,17 +101,17 @@ namespace NBrightDNN.render
             return TextBox(info, xpath, "", "", false);
         }
 
-        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "")
+        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes)
         {
-            return TextBox(info, xpath, attributes = "", "", false);
+            return TextBox(info, xpath, attributes, "", false);
         }
 
-        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "", String defaultValue = "")
+        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes, String defaultValue)
         {
-            return TextBox(info, xpath, attributes = "", defaultValue = "", false);
+            return TextBox(info, xpath, attributes, defaultValue, false);
         }
 
-        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes = "", String defaultValue = "", bool encrypted = false)
+        public IEncodedString TextBox(NBrightInfo info, String xpath, String attributes, String defaultValue, bool encrypted)
         {
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
             if (defaultValue.StartsWith("ResourceKey:")) defaultValue = ResourceKey(defaultValue.Replace("ResourceKey:", "")).ToString();
