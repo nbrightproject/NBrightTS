@@ -3,7 +3,7 @@ NBright Template System
 
 This project is the replacement for the /NBrightCore and /NBrightDNN projects.
 
-The project strucutre is designed to better fit development in DNN environment.
+The project structure is designed to better fit development in DNN environment.
 
 #Setup Dev System
 
