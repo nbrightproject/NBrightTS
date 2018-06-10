@@ -185,7 +185,7 @@ namespace NBrightCore.common
 
         public static string FormatToSave(string inpData, TypeCode dataTyp, string editlang)
         {
-            if (editlang == "") editlang = GetCurrentCulture();
+            if (string.IsNullOrWhiteSpace(editlang)) editlang = GetCurrentCulture();
             if (String.IsNullOrEmpty(inpData))
                 return inpData;
             switch (dataTyp)
