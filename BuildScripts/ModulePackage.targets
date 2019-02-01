@@ -16,7 +16,7 @@
     <!--in VS 2012 we exclude the packages folder -->
     <ItemGroup>
       <InstallInclude Include="**\*.cshtml" Exclude="packages\**;Themes\**;" />
-      <InstallInclude Include="**\*.ascx" Exclude="packages\**;Skins\**;Themes\**;" />
+      <InstallInclude Include="**\*.ascx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.ashx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.asmx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.css" Exclude="packages\**;Themes\**;" />
@@ -25,7 +25,11 @@
       <InstallInclude Include="**\*.resx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.aspx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.js" Exclude="packages\**;Themes\**;" />
-     <InstallInclude Include="**\*.xml" Exclude="**\menuplugin.xml;Themes\**;**\bin\**;**\obj\**;**\_ReSharper*\**;**\.git\**;packages\**;Installation\**;Providers\**\bin\**;Providers\**\obj\**;Skins\**;" />
+      <InstallInclude Include="**\*.png" Exclude="packages\**;Themes\**;" />
+      <InstallInclude Include="**\*.gif" Exclude="packages\**;Themes\**;" />
+      <InstallInclude Include="**\*.jpg" Exclude="packages\**;Themes\**;" />
+      <InstallInclude Include="**\*.jpeg" Exclude="packages\**;Themes\**;" />
+      <InstallInclude Include="**\*.xml" Exclude="**\menuplugin.xml;Themes\**;**\bin\**;**\obj\**;**\_ReSharper*\**;**\.git\**;packages\**;Installation\**;Providers\**\bin\**;Providers\**\obj\**;" />
       <InstallInclude Include="**\*.txt"  Exclude="Themes\**;**\obj\**;**\_ReSharper*\**;packages\**;**\.git\**;Installation\**;" />
       <InstallInclude Include="**\images\**" Exclude="packages\**;Themes\**;Thumbs.db;" />
       <InstallInclude Include="**\img\**" Exclude="packages\**;Themes\**;Thumbs.db;" />
