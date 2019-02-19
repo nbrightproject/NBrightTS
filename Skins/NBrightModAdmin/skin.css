@@ -118,6 +118,10 @@ hr {border:0;height:10px;background:#f3f3f3;margin:20px 0;}
 .dnnActionMenu {right:10px;left:auto;width:95px;}
 .DNNEmptyPane {padding:0 !important;}
 
+.personalBarContainer {
+    display: none;
+}
+
 /************************************************************************************
 MEDIA QUERIES
 *************************************************************************************/
@@ -131,4 +135,3 @@ MEDIA QUERIES
             screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1280px) and (orientation: portrait) {
 .page {width:auto;}
 }
-
