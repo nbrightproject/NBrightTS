@@ -604,6 +604,20 @@ namespace NBrightDNN.render
             return new RawString(strOut);
         }
 
+        public IEncodedString HeadingOf(String text, String headerstyle, String anchor)
+        {
+            var anchorstr = "";
+            if (anchor != "") anchorstr = " id='" + anchor + "' ";
+            var headingstylestart = "<" + headerstyle + " " + anchorstr + ">";
+            var headingstyleend = "</" + headerstyle + ">";
+            var strOut = headingstylestart + text + headingstyleend;
+            return new RawString(strOut);
+        }
+        public IEncodedString HeadingOf(NBrightInfo info)
+        {            
+            return HeadingOf(info.GetXmlProperty("genxml/lang/genxml/textbox/title"), info.GetXmlProperty("genxml/dropdownlist/headingstyle"), info.GetXmlProperty("genxml/textbox/anchor"));
+        }
+
         public IEncodedString CheckBoxListOf(NBrightInfo info, String xpath, String datavalue, String datatext, String attributes = "")
         {
             if (datavalue.StartsWith("ResourceKey:")) datavalue = ResourceKey(datavalue.Replace("ResourceKey:", "")).ToString();
