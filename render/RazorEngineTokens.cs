@@ -61,7 +61,8 @@ namespace NBrightDNN.render
         /// <returns></returns>
         public IEncodedString AddPreProcessMetaData(String metaKey, String metaValue,String templateFullName,String moduleId)
         {
-            var cachedlist = (Dictionary<String, String>)Utils.GetCache("preprocessmetadata" + templateFullName + moduleId);
+            var cachemetadatakey = "preprocessmetadata*" + templateFullName + "*" + moduleId + "*" + PortalSettings.Current.PortalId;
+            var cachedlist = (Dictionary<String, String>)Utils.GetCache(cachemetadatakey);
             if (cachedlist == null)
             {
                 cachedlist = new Dictionary<String, String>();
@@ -72,7 +73,7 @@ namespace NBrightDNN.render
             else
                 cachedlist.Add(metaKey, metaValue);
 
-            Utils.SetCache("preprocessmetadata" + templateFullName + moduleId, cachedlist);
+            Utils.SetCache(cachemetadatakey, cachedlist);
 
             // add to internal metadata, so we can use it in the razor template if needed.
             return AddMetaData(metaKey, metaValue);
