@@ -16,6 +16,7 @@ using DotNetNuke.Services.FileSystem;
 //using ICSharpCode.SharpZipLib.Zip;
 using NBrightCore.common;
 using FileInfo = System.IO.FileInfo;
+using System.IO.Compression;
 
 namespace NBrightDNN
 {
@@ -147,11 +148,7 @@ namespace NBrightDNN
 
         public static void UnZip(string zipFileMapPath, string outputFolder)
         {
-            //var zipStream = new FileStream(zipFileMapPath, FileMode.Open, FileAccess.Read);
-            //var zStream = new ZipInputStream(zipStream);
-            //UnzipResources(zStream, outputFolder);
-            //zipStream.Close();
-            //zStream.Close();
+            ZipFile.ExtractToDirectory(zipFileMapPath, outputFolder);
         }
 
         //public static void UnzipResources(ZipInputStream zipStream, string destPath)

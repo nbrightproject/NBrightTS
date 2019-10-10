@@ -45,13 +45,10 @@
     <Reference Include="RazorEngine">
       <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SharpZipLib, Version=0.81.0.1407, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
