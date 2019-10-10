@@ -148,6 +148,9 @@ namespace NBrightDNN
 
         public static void UnZip(string zipFileMapPath, string outputFolder)
         {
+            var filename = Path.GetFileNameWithoutExtension(zipFileMapPath);
+            var ziptarget = outputFolder.TrimEnd('\\') + "\\" + filename;
+            if (Directory.Exists(ziptarget)) Directory.Delete(ziptarget, true);
             ZipFile.ExtractToDirectory(zipFileMapPath, outputFolder);
         }
 
