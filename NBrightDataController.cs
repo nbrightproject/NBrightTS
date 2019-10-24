@@ -112,12 +112,13 @@ namespace NBrightDNN
         public NBrightInfo GetByType(int portalId, int moduleId, string entityTypeCode, string selUserId = "", string lang = "")
         {
             var strFilter = "";
+            if (moduleId > 0) strFilter += " and NB1.ModuleId = " + moduleId + " "; // this filer to make sure SQL return is correct.
             if (selUserId != "")
             {
                 strFilter += " and NB1.UserId = " + selUserId + " ";
             }
 
-            var l = CBO.FillCollection<NBrightInfo>(DataProvider.Instance().GetList(portalId, moduleId, entityTypeCode, strFilter, "", 1, 1, 1, 1, lang));
+            var l = CBO.FillCollection<NBrightInfo>(DataProvider.Instance().GetList(portalId, moduleId, entityTypeCode, strFilter, "", 0, 0, 0, 0, lang));
             if (l.Count >= 1)
             {
                 NBrightInfo nbi = l[0];
