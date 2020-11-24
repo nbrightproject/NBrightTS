@@ -96,7 +96,7 @@ namespace NBrightCore.common
 
         public static string GetCurrentCulture()
         {
-            return Thread.CurrentThread.CurrentCulture.ToString();
+            return Thread.CurrentThread.CurrentCulture.Name.ToString();
         }
 
         public static string GetCurrentCountryCode()
