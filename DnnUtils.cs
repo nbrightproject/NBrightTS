@@ -684,9 +684,10 @@ namespace NBrightDNN
             foreach (var p in properties)
             {
                 userInfo.Profile.SetProfileProperty(p.Key,p.Value);
-                UserController.UpdateUser(PortalSettings.Current.PortalId, userInfo);
             }
+            UserController.UpdateUser(PortalSettings.Current.PortalId, userInfo);
         }
+
         public static void SetUserProfileProperties(String userId,Dictionary<string, string> properties)
         {
             if (Utils.IsNumeric(userId))
