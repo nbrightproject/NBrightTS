@@ -36,29 +36,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke">
-      <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="RazorEngine">
-      <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ApiConnector.ashx.cs">
       <DependentUpon>ApiConnector.ashx</DependentUpon>
     </Compile>
@@ -101,12 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ApiConnector.ashx" />
-    <None Include="BuildScripts\build.bat" />
-    <None Include="BuildScripts\ModulePackage.targets">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="ckeditor\plugins\dnnpagelinks\LICENSE.md" />
+    <None Include="dnnpack.config" />
+    <None Include="DNNpackager.dnnpack" />
     <None Include="Installation\03.02.00.SqlDataProvider" />
     <None Include="Installation\03.04.00.SqlDataProvider" />
     <None Include="NBrightDNN.dnn">
@@ -140,10 +114,39 @@
     <Content Include="Skins\NBrightModAdmin\skin.doctype.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NBrightCore\NBrightCore.csproj">
-      <Project>{7b338113-6a9a-484d-a6c6-4d63fd5e58c6}</Project>
-      <Name>NBrightCore</Name>
+    <ProjectReference Include="..\NBrightBuy\NBrightBuy.csproj">
+      <Project>{8f850303-bec5-4247-9126-1e58f1402205}</Project>
+      <Name>NBrightBuy</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DotNetNuke">
+      <HintPath>_external\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Instrumentation">
+      <HintPath>_external\DotNetNuke.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.DDRMenu">
+      <HintPath>_external\DotNetNuke.Web.DDRMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>_external\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NBrightCore">
+      <HintPath>_external\NBrightCore.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>_external\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -151,25 +154,14 @@
     <DNNFileName>NBrightDNN</DNNFileName>
     <PackageName>NBrightDNN</PackageName>
   </PropertyGroup>
-  <Import Project="BuildScripts\ModulePackage.Targets" />
-  <Target Name="AfterBuild" DependsOnTargets="PackageAndDeploy">
-  </Target>
   <PropertyGroup>
     <PostBuildEvent>
-    </PostBuildEvent>
+DNNpackager.exe  $(ProjectDir) $(ProjectDir)$(OutDir) $(ConfigurationName)
+
+</PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
-  </Target>
-  <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
-  -->
 </Project>

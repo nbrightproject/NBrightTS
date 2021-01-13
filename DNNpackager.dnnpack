@@ -1,0 +1,31 @@
+<root>
+	<version>8.6.2</version>
+	<!-- Include only files that match the regular expression -->
+  <regexpr>(\.cshtml|\.html|\.resx|\.dnn|\.png|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
+  <directory include='false'>
+		<!-- All paths should be from the source root (project root) -->
+    <value>\.git</value>
+    <value>\.vs</value>
+    <value>\bin</value>
+    <value>\obj</value>
+    <value>\controls</value>
+    <value>\Installation</value>
+    <value>\_external</value>
+    <value>\render</value>
+    <value>\SqlDataProvider</value>
+    <value>\NBrightCore\obj</value>
+  </directory>
+  <file include='false'>
+    <value>\NBrightDNN.dnn</value>
+  </file>
+  <file include='true'>
+    <value>\Installation\03.02.00.SqlDataProvider</value>
+    <value>\Installation\03.04.00.SqlDataProvider</value>
+    <value>\Installation\Uninstall.SqlDataProvider</value>
+  </file>
+	<assembly>
+		<value>NBrightDNN.dll</value>
+    <value>NBrightCore.dll</value>
+    <value>RazorEngine.dll</value>
+  </assembly>  
+</root>
