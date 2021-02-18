@@ -72,6 +72,8 @@ namespace NBrightCore.common
         {
             var fullCookieName = string.Format("NBright_{0}_Portal{1}", cookieName, portalId.ToString(CultureInfo.InvariantCulture));
             var foundCookie = HttpContext.Current.Request.Cookies[fullCookieName] ?? new HttpCookie(fullCookieName);
+            foundCookie.SameSite = SameSiteMode.Lax;
+            foundCookie.Secure = false;
 
             if (value != null)
             {
