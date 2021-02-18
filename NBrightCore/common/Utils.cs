@@ -160,7 +160,11 @@ namespace NBrightCore.common
                 response.AppendHeader("content-disposition", "attachment; filename=" + fileName);
                 response.ContentType = "application/octet-stream";
                 response.WriteFile(docFilePath);
-                response.End();
+
+                response.Flush(); // Sends all currently buffered output to the client.
+                response.SuppressContent = true;  // Gets or sets a value indicating whether to send HTTP content to the client.
+                HttpContext.Current.ApplicationInstance.CompleteRequest(); // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
+                //response.End();
             }
 
         }

@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Razor|AnyCPU'">
+    <OutputPath>bin\Razor\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiConnector.ashx.cs">
       <DependentUpon>ApiConnector.ashx</DependentUpon>
@@ -79,7 +82,6 @@
   <ItemGroup>
     <None Include="ApiConnector.ashx" />
     <None Include="ckeditor\plugins\dnnpagelinks\LICENSE.md" />
-    <None Include="dnnpack.config" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="Installation\03.02.00.SqlDataProvider" />
     <None Include="Installation\03.04.00.SqlDataProvider" />

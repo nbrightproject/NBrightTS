@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Razor|AnyCPU'">
+    <OutputPath>bin\Razor\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="RazorEngine">
       <HintPath>..\_external\RazorEngine.dll</HintPath>
@@ -77,7 +80,6 @@
     <Compile Include="TemplateEngine\TemplateInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dnnpack.config" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="packages.config" />
     <None Include="README.md" />
