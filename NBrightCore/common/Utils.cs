@@ -162,7 +162,6 @@ namespace NBrightCore.common
                 response.WriteFile(docFilePath);
 
                 response.Flush(); // Sends all currently buffered output to the client.
-                response.SuppressContent = true;  // Gets or sets a value indicating whether to send HTTP content to the client.
                 HttpContext.Current.ApplicationInstance.CompleteRequest(); // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
                 //response.End();
             }
