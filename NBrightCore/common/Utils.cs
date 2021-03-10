@@ -21,7 +21,6 @@ using Image = System.Drawing.Image;
 
 namespace NBrightCore.common
 {
-
     public class UtilsEmail
     {
         bool _invalid = false;
@@ -64,6 +63,13 @@ namespace NBrightCore.common
 
     public class Utils
     {
+        public static string MapPath(string relpath)
+        {
+            if (String.IsNullOrWhiteSpace(relpath)) return "";
+            relpath = "/" + relpath.TrimStart('/');
+            return System.Web.Hosting.HostingEnvironment.MapPath(relpath);
+        }
+
         public static string UnCode(string codedval)
         {
             var strOut = "";
