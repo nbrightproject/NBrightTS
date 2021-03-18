@@ -40,6 +40,9 @@ namespace NBrightDNN
 
                 if ((newImage != null))
                 {
+                    context.Response.Clear();
+                    context.Response.ClearHeaders();
+
                     ImageCodecInfo useEncoder;
 
                     // due to issues on some servers not outputing the png format correctly from the thumbnailer.
@@ -60,6 +63,10 @@ namespace NBrightDNN
 
                     try
                     {
+                        context.Response.AddFileDependency(src);
+                        context.Response.Cache.SetETagFromFileDependencies();
+                        context.Response.Cache.SetLastModifiedFromFileDependencies();
+                        context.Response.Cache.SetCacheability(HttpCacheability.Public);
                         newImage.Save(context.Response.OutputStream, useEncoder, encoderParameters);
                     }
                     catch (Exception exc)
