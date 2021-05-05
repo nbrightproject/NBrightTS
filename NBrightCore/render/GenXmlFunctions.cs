@@ -1683,7 +1683,7 @@ namespace NBrightCore.render
                             var dataTyp = "";
                             if (nod.Attributes != null && (nod.Attributes["dt"] != null)) dataTyp = nod.Attributes["dt"].InnerText;
 
-                            var selText = nod.InnerText;
+                            var selText = System.Security.SecurityElement.Escape(nod.InnerText);
 
                             if (!String.IsNullOrEmpty(originalXml))
                             {
