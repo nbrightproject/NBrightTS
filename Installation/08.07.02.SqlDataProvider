@@ -184,6 +184,8 @@ begin
 
 end
 
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightData_GetListCount]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure {databaseOwner}[{objectQualifier}NBrightData_GetListCount]
 GO
@@ -238,8 +240,6 @@ begin
 	SELECT @recct AS recct       -- return the total # of records
     
 end
-
-
 
 
 GO
