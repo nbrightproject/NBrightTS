@@ -1,5 +1,5 @@
 <root>
-	<version>8.7.1</version>
+	<version>8.7.2</version>
   <websitedestrelpath>\DesktopModules\NBright\NBrightData</websitedestrelpath>
   <websitedestbinrelpath>\bin</websitedestbinrelpath>
   <!-- Include only files that match the regular expression -->
@@ -23,7 +23,8 @@
   <file include='true'>
     <value>\Installation\03.02.00.SqlDataProvider</value>
     <value>\Installation\03.04.00.SqlDataProvider</value>
-    <value>\Installation\Uninstall.SqlDataProvider</value>
+	  <value>\Installation\08.07.02.SqlDataProvider</value>
+	  <value>\Installation\Uninstall.SqlDataProvider</value>
   </file>
 	<assembly>
 		<value>NBrightDNN.dll</value>
