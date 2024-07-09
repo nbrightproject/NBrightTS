@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightCore", "NBrightCore\NBrightCore.csproj", "{7B338113-6A9A-484D-A6C6-4D63FD5E58C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightDNN", "NBrightDNN.csproj", "{EC815D38-62CF-4B46-8177-CF40CE1AAB62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9DC28E8-0C99-4B3A-9157-B724B54B1646}"
+	ProjectSection(SolutionItems) = preProject
+		..\dnnpack.config = ..\dnnpack.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

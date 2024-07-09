@@ -8,6 +8,8 @@
 
      editorvar{id} = CKEDITOR.replace('editor{id}', {
          customConfig: '/DesktopModules/NBright/NBrightData/ckeditor/nbrightconfig.js'
+		 // Disable security notifications
+		versionCheck: false
      });
 
  editorvar{id}.on('change', function (event) {  
