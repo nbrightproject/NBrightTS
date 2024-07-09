@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="NBrightTemplateSys" type="Module" version="8.7.0">
+		<package name="NBrightTemplateSys" type="Module" version="8.7.2">
 			<friendlyName>NBrightTemplateSys</friendlyName>
 			<description>NBrightTemplateSys is the core support module for projects using the NBright Template System.  It only installs core dlls required by other projects. DNN8+ ONLY</description>
 			<iconFile />
@@ -51,7 +51,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
               <name>03.04.00.SqlDataProvider</name>
               <version>03.04.00</version>
             </script>
-            <script type="UnInstall">
+			  <script type="Install">
+				  <name>08.07.02.SqlDataProvider</name>
+				  <version>08.07.02</version>
+			  </script>
+			  <script type="UnInstall">
               <name>Uninstall.SqlDataProvider</name>
               <version>03.02.00</version>
             </script>

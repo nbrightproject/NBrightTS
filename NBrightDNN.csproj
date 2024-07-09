@@ -84,6 +84,7 @@
     <None Include="ckeditor\plugins\dnnpagelinks\LICENSE.md" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="Installation\03.02.00.SqlDataProvider" />
+    <None Include="Installation\08.07.02.SqlDataProvider" />
     <None Include="Installation\03.04.00.SqlDataProvider" />
     <None Include="NBrightDNN.dnn">
       <SubType>Designer</SubType>
