@@ -158,22 +158,25 @@ namespace NBrightCore.common
             return (result == null) ? String.Empty : result.Trim();
         }
 
-
         public static void ForceDocDownload(string docFilePath, string fileName, HttpResponse response)
         {
-            if (File.Exists(docFilePath) & !String.IsNullOrEmpty(fileName))
-            {
-                response.AppendHeader("content-disposition", "attachment; filename=" + fileName);
-                response.ContentType = "application/octet-stream";
-                response.WriteFile(docFilePath);
+            if (!File.Exists(docFilePath) || string.IsNullOrEmpty(fileName))
+                return;
 
-                response.Flush(); // Sends all currently buffered output to the client.
-                HttpContext.Current.ApplicationInstance.CompleteRequest(); // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
-                //response.End();
-            }
+            response.Clear();
+            response.ClearHeaders();
 
+            response.ContentType = "application/octet-stream";
+            response.AddHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+            response.TransmitFile(docFilePath);
+            response.End();
+
+            // ************************* THIS stoped the downlaod form working in certain situations. So we use: response.End();
+            //response.Flush(); // Sends all currently buffered output to the client.
+            //HttpContext.Current.ApplicationInstance.CompleteRequest(); // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
+            // *************************
         }
-
         public static void ForceStringDownload(HttpResponse response, string fileName, string fileData)
         {
             response.AppendHeader("content-disposition", "attachment; filename=" + fileName);
